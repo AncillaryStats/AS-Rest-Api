@@ -10,7 +10,9 @@ DATABASE = {
 }
 
 ITEM_PIPELINES = {
-    'espn_scraper.pipelines.NFL_Team_2015_Pipeline': 100
+    'espn_scraper.pipelines.NFL_Team_Info_2015_Pipeline': 100,
+    'espn_scraper.pipelines.NFL_Player_2015_Pipeline': 200
+
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
