@@ -13,9 +13,48 @@ class NFL_Player_2015(Item):
     position = Field()
 
 class NFL_QB_Game_2015(Item):
+    player_name = Field()
+    date = Field()
+    opponent = Field()
+    result = Field()
+    pass_completions = Field()
+    pass_attempts = Field()
+    pass_yards = Field()
+    comp_percentage = Field()
+    avg_yards_per_pass = Field()
+    longest_pass = Field()
+    pass_tds = Field()
+    interceptions = Field()
+    qb_rating = Field()
+    passer_rating = Field()
+    rush_attempts = Field()
+    rush_yards = Field()
+    avg_yards_per_rush = Field()
+    longest_rush = Field()
+    rush_tds = Field()
+    is_season_totals = Field()
 
 class NFL_RB_Game_2015(Item):
+    player_name = Field()
+    date = Field()
+    opponent = Field()
+    result = Field()
+    rush_attempts = Field()
+    rush_yards = Field()
+    avg_yards_per_rush = Field()
+    longest_rush = Field()
+    rush_tds = Field()
+    receptions = Field()
+    rec_yards = Field()
+    avg_yards_per_rec = Field()
+    longest_rec = Field()
+    rec_tds = Field()
+    fumbles = Field()
+    fumbles_lost = Field()
+    is_season_totals = Field()
 
 class NFL_WR_Game_2015(Item):
+    player_name = Field()
 
 class NFL_TE_Game_2015(Item):
+    player_name = Field()
