@@ -5,10 +5,10 @@ from scrapy.utils.response import get_base_url
 from urlparse import urljoin
 from scrapy.http import Request
 
-from scraper_app.items import NFL_Team_2015
+from espn_scraper.items import NFL_Team_2015
 
 class EspnSpider(Spider):
-    name = 'espn_team_info'
+    name = 'nfl_team_info'
     allowed_domains = ['espn.com', 'espn.go.com']
     start_urls = ['http://espn.go.com/nfl/teams']
 
