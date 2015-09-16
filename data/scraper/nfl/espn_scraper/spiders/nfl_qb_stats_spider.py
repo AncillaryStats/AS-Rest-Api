@@ -12,59 +12,51 @@ from espn_scraper.items import NFL_QB_Game_2015
 class EspnSpider(Spider):
     name = 'nfl_qb_stats'
     allowed_domains = ['espn.com', 'espn.go.com']
-    # start_urls = ['http://espn.go.com/nfl/teams']
-    start_urls = ['http://espn.go.com/nfl/player/gamelog/_/id/14874/andrew-luck',
-                  'http://espn.go.com/nfl/player/gamelog/_/id/2330/tom-brady',
-                  'http://espn.go.com/nfl/player/gamelog/_/id/14877/nick-foles',
-                  'http://espn.go.com/nfl/player/gamelog/_/id/2576980/marcus-mariota'
-                  ]
+    start_urls = ['http://espn.go.com/nfl/teams']
 
-
-    # # Follows all links to nfl teams' depth charts
-    # def parse(self, response):
-    #     base_url = get_base_url(response)
-
-    #     depth_charts = response.xpath('//a[text()="Depth Chart"]/@href').extract()
-    #     for depth_chart in depth_charts:
-    #         link = urljoin(base_url, depth_chart)
-    #         yield scrapy.http.Request(link, callback = self.parse_depth_chart)
-
-    # # Follows all links for individual QBs, WRs, TEs, RBs, and FBs on team depth chart
-    # def parse_depth_chart(self, response):
-
-    #     rows = response.xpath('//*[@id="my-teams-table"]/div[4]/div[1]/table/tr')
-    #     for row in rows:
-    #         players = row.xpath('td/strong/a | td/a')
-    #         # players = row.xpath('td//a')
-
-    #         names = players.xpath('text()').extract()
-    #         links = players.xpath('@href').extract()
-    #         cols = row.xpath('td')
-    #         position = cols[0].xpath('text()').extract()[0]
-
-    #         if position == 'QB' or position == 'WR' or position == 'TE' or position == 'RB' or position == 'FB':
-    #             if len(links) > 0:
-    #                 for link, name in zip(links, names):
-    #                     yield scrapy.http.Request(link, callback = self.go_to_game_log)
-
-    # # Follows link to player's game long for most recent year
-    # # TODO: add argument for year?
-    # def go_to_game_log(self, response):
-    #     game_log = response.xpath('//*[@id="content"]/div[6]/div[1]/div[2]/div/p/a/@href').extract()
-
-    #     if game_log:
-    #         game_log = game_log[0]
-    #         print('\n')
-    #         base_url = get_base_url(response)
-    #         absolute_path = urljoin(base_url, game_log)
-    #         print('going to game log', absolute_path)
-    #         yield scrapy.http.Request(absolute_path, callback = self.parse_game_log)
-
-    # Convert stats table into array of arrays
-    # TODO: parse headers and regular season totals
-    # def parse_game_log(self, response):
-    
+    # Follows all links to nfl teams' depth charts
     def parse(self, response):
+        base_url = get_base_url(response)
+
+        depth_charts = response.xpath('//a[text()="Depth Chart"]/@href').extract()
+        for depth_chart in depth_charts:
+            link = urljoin(base_url, depth_chart)
+            yield Request(link, callback = self.parse_depth_chart)
+
+    # Follows all links for individual QBs on team depth chart
+    def parse_depth_chart(self, response):
+
+        rows = response.xpath('//*[@id="my-teams-table"]/div[4]/div[1]/table/tr')
+        for row in rows:
+            players = row.xpath('td/strong/a | td/a')
+            # players = row.xpath('td//a')
+
+            names = players.xpath('text()').extract()
+            links = players.xpath('@href').extract()
+            cols = row.xpath('td')
+            position = cols[0].xpath('text()').extract()[0]
+
+            if position == 'QB':
+                if len(links) > 0:
+                    for link, name in zip(links, names):
+                        yield Request(link, callback = self.go_to_game_log)
+
+    # Follows link to player's game long for most recent year
+    # TODO: add argument for year?
+    def go_to_game_log(self, response):
+        game_log = response.xpath('//*[@id="content"]/div[6]/div[1]/div[2]/div/p/a/@href').extract()
+
+        if game_log:
+            game_log = game_log[0]
+            print('\n')
+            base_url = get_base_url(response)
+            absolute_path = urljoin(base_url, game_log)
+            print('going to game log', absolute_path)
+            yield Request(absolute_path, callback = self.parse_game_log)
+
+
+    # Convert table of game stats into scrapy items to be sent to pipeline for db storage
+    def parse_game_log(self, response):
         games_table = []
 
         # If default selector returns empty, try second selector
