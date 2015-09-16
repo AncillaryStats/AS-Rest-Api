@@ -13,8 +13,6 @@ class NFL_Team_Info_2015_Pipeline(object):
         create_tables(engine)
         self.Session = sessionmaker(bind=engine)
 
-
-
     def process_item(self, item, spider):
         """This method is called for every item pipeline component."""
         print('passing through NFL_Team_Info_2015 pipeline')
@@ -40,7 +38,7 @@ class NFL_Team_Info_2015_Pipeline(object):
                 print('team already exists')
                 session.close()
 
-
+        # pass item to next pipeline
         return item
 
 # Pipeline from processing nfl teams from 'nfl_team_rosters' spider
@@ -53,8 +51,6 @@ class NFL_Player_2015_Pipeline(object):
         engine = db_connect()
         create_tables(engine)
         self.Session = sessionmaker(bind=engine)
-
-
 
     def process_item(self, item, spider):
         """This method is called for every item pipeline component."""
@@ -80,7 +76,9 @@ class NFL_Player_2015_Pipeline(object):
                     session.close()
             else:
                 print('player already exists')
+                session.close()
 
+        # pass item to next pipeline
         return item
 
 # Pipeline from processing nfl teams from 'nfl_qb_stats' spider
@@ -94,7 +92,6 @@ class NFL_QB_Stats_2015_Pipeline(object):
         create_tables(engine)
         self.Session = sessionmaker(bind=engine)
 
-
     def process_item(self, item, spider):
         """This method is called for every item pipeline component."""
         print('passing through NFL_QB_Stats_2015 pipeline')
@@ -105,21 +102,25 @@ class NFL_QB_Stats_2015_Pipeline(object):
             session = self.Session()
             game = NFL_QB_Game_2015(**item)
 
-            # Add team if it does not exist yet
-            # if not session.query(NFL_QB_Game_2015).filter(NFL_QB_Game_2015.player_name == item['player_name']).count():
-            #     print('new player found!')
-            try:
-                session.add(game)
-                session.commit()
-            except:
-                session.rollback()
-                print('error saving item!')
-                raise
-            finally:
-                session.close()
-            # else:
-            #     print('player already exists')
+            # Add game if it hasn't been added yet
+            # if not session.query(NFL_QB_Game_2015).filter(NFL_QB_Game_2015.date == item['date'], NFL_QB_Game_2015.player_name == item['player_name']).count():
+            if True:
 
+                print('new game found!')
+                try:
+                    session.add(game)
+                    session.commit()
+                except:
+                    session.rollback()
+                    print('error saving item!')
+                    raise
+                finally:
+                    session.close()
+            else:
+                print('game already exists')
+                session.close()
+
+        # pass item to next pipeline
         return item
 
 
@@ -145,21 +146,24 @@ class NFL_RB_Stats_2015_Pipeline(object):
             session = self.Session()
             game = NFL_RB_Game_2015(**item)
 
-            # Add team if it does not exist yet
-            # if not session.query(NFL_QB_Game_2015).filter(NFL_QB_Game_2015.player_name == item['player_name']).count():
-            #     print('new player found!')
-            try:
-                session.add(game)
-                session.commit()
-            except:
-                session.rollback()
-                print('error saving item!')
-                raise
-            finally:
+            # Add game if it hasn't been added yet
+            # if not session.query(NFL_RB_Game_2015).filter(NFL_RB_Game_2015.date == item['date'], NFL_RB_Game_2015.player_name == item['player_name']).count():
+            if True:
+                print('new game found!')
+                try:
+                    session.add(game)
+                    session.commit()
+                except:
+                    session.rollback()
+                    print('error saving item!')
+                    raise
+                finally:
+                    session.close()
+            else:
+                print('game already exists')
                 session.close()
-            # else:
-            #     print('player already exists')
 
+        # pass item to next pipeline
         return item
 
 # Pipeline from processing nfl teams from 'nfl_wr_stats' spider
@@ -180,24 +184,25 @@ class NFL_WR_Stats_2015_Pipeline(object):
 
         # Only process items for the nfl team info spider
         if spider.name == 'nfl_wr_stats':
-            # print(item)
             session = self.Session()
             game = NFL_WR_Game_2015(**item)
 
-            # Add team if it does not exist yet
-            # if not session.query(NFL_QB_Game_2015).filter(NFL_QB_Game_2015.player_name == item['player_name']).count():
-            #     print('new player found!')
-            try:
-                session.add(game)
-                session.commit()
-            except:
-                session.rollback()
-                print('error saving item!')
-                raise
-            finally:
+            # Add game if it hasn't been added yet
+            # if not session.query(NFL_WR_Game_2015).filter(NFL_WR_Game_2015.date == item['date'], NFL_WR_Game_2015.player_name == item['player_name']).count():
+            if True:
+                print('new game found!')
+                try:
+                    session.add(game)
+                    session.commit()
+                except:
+                    session.rollback()
+                    print('error saving item!')
+                    raise
+                finally:
+                    session.close()
+            else:
+                print('game already exists')
                 session.close()
-            # else:
-            #     print('player already exists')
 
         return item
 
@@ -223,19 +228,20 @@ class NFL_TE_Stats_2015_Pipeline(object):
             session = self.Session()
             game = NFL_TE_Game_2015(**item)
 
-            # Add team if it does not exist yet
-            # if not session.query(NFL_QB_Game_2015).filter(NFL_QB_Game_2015.player_name == item['player_name']).count():
-            #     print('new player found!')
-            try:
-                session.add(game)
-                session.commit()
-            except:
-                session.rollback()
-                print('error saving item!')
-                raise
-            finally:
-                session.close()
-            # else:
-            #     print('player already exists')
+            # Add game if it hasn't been added yet
+            # if not session.query(NFL_TE_Game_2015).filter(NFL_TE_Game_2015.date == item['date'], NFL_TE_Game_2015.player_name == item['player_name']).count():
+            if True:
+                print('new game found!')
+                try:
+                    session.add(game)
+                    session.commit()
+                except:
+                    session.rollback()
+                    print('error saving item!')
+                    raise
+                finally:
+                    session.close()
+            else:
+                print('game already exists')
 
         return item
