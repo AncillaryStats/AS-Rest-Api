@@ -12,10 +12,10 @@ class EspnSpider(Spider):
     allowed_domains = ['espn.com', 'espn.go.com']
     start_urls = ['http://espn.go.com/nfl/teams']
 
-    item_fields = {
-        'division' : '//*[@id="sub-branding"]/div[2]/text()',
-        'team_name' : '//*[@id="sub-branding"]/h2/a/b/text()'
-    }
+    # item_fields = {
+    #     'division' : '//*[@id="sub-branding"]/div[2]/text()',
+    #     'team_name' : '//*[@id="sub-branding"]/h2/a/b/text()'
+    # }
 
     # Follows all links to nfl teams' depth charts
     def parse(self, response):
@@ -38,6 +38,6 @@ class EspnSpider(Spider):
         loader.add_xpath('division', '//*[@id="sub-branding"]/div[2]/text()')
         loader.add_xpath('name', '//*[@id="sub-branding"]/h2/a/b/text()')
 
-        yield loader.load_item()
+        yield loader.load_item() 
 
 
