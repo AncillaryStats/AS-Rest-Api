@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="SportsStats">
+<head>
+  <meta charset="UTF-8">
+  <title>Sports Stats</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>
+  <link rel="stylesheet" href="static/app.css">
+  
+</head>
+<body>
+  <nav class="navbar navbar-default">
+  </nav>
+  <h1>Welcome to Sports Stats</h1>
+
+  <!-- Quarterback stats table -->
+  <div ng-controller="NflQbCtrl as qbs">
+  <table class="table table-hover table-striped stats-table">
+    <tbody>
+      <thead>
+        <tr>
+          <th width="200">Quarterback</th>
+          <th>Pass Attempts</th>
+          <th>Pass Completions</th>
+        </tr>
+      </thead>
+      <tr ng-repeat="game in qbs.model">
+        <td>{{ game.player_name }}</td>
+        <td>{{ game.pass_attempts}}</td>
+        <td>{{ game.pass_completions}}</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+<script src="static/main.js"></script>
+</body>
+</html>
