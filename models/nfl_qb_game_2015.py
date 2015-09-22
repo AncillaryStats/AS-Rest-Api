@@ -1,3 +1,5 @@
+from config import db
+
 class NFL_QB_Game_2015(db.Model):
     """2015 NFL qb games table"""
     __tablename__ = 'nfl_qb_games_2015'
