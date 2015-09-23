@@ -5,33 +5,165 @@
   <title>Sports Stats</title>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
   <link rel="stylesheet" href="static/app.css">
+  <link rel="stylesheet" href="static/lavish.css">
   
 </head>
 <body>
-  <nav class="navbar navbar-default">
-  </nav>
-  <h1>Welcome to Sports Stats</h1>
+  <!-- Navbar container -->
+  <nav class="nav navbar-inverse navbar-default">
+    <div class="container">
+      <!-- Home Link -->
+      <div class="navbar-header">
+      <a class="navbar-brand" href="#">Ancillary Stats</a>
+      </div>
 
-  <!-- Quarterback stats table -->
-  <div ng-controller="NflQbCtrl as qbs">
-  <table class="table table-hover table-striped stats-table">
-    <tbody>
-      <thead>
-        <tr>
-          <th width="200">Quarterback</th>
-          <th>Pass Attempts</th>
-          <th>Pass Completions</th>
-        </tr>
-      </thead>
-      <tr ng-repeat="game in qbs.model">
-        <td>{{ game.player_name }}</td>
-        <td>{{ game.pass_attempts}}</td>
-        <td>{{ game.pass_completions}}</td>
-      </tr>
-    </tbody>
-  </table>
-  </div>
+      <ul class="nav navbar-nav">
+        <li><a href="#">NFL</a></li>
+        <li><a href="#">NBA</a></li>
+      </ul>
+
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search players">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <div></div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <h1 class="position-header">Quarterback Leaders</h1>
+
+    <!-- Quarterback leaders -->
+    <div class="row" ng-controller="NflQbCtrl as qbs">
+
+      <!-- Season passing touchdown leaders -->
+      <div class="col-md-4 table-column">
+        <div class="panel panel-default">
+        <table class="table table-hover stats-table">
+          <tbody>
+            <thead>
+              <tr>
+                <th colspan="2" class="table-header">Passing Touchdowns</th>
+              </tr>
+            </thead>
+            <tr ng-repeat="game in qbs.passingTdsLeaders">
+              <td class="player-name-row">{{ game.player_name }}</td>
+              <td class="stat-row">{{ game.pass_tds}}</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <!-- Season passing yards leaders -->
+      <div class="col-md-4 table-column">
+        <div class="panel panel-default">
+         <table class="table table-hover stats-table">
+          <tbody>
+            <thead>
+              <tr>
+                <th colspan="2" class="table-header">Passing Yards</th>
+              </tr>
+            </thead>
+            <tr ng-repeat="game in qbs.passingYardsLeaders">
+              <td class="player-name-row">{{ game.player_name }}</td>
+              <td class="stat-row">{{ game.pass_yards}}</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <!-- Season QBR leaders -->
+      <div class="col-md-4 table-column">
+        <div class="panel panel-default">
+          <table class="table table-hover stats-table">
+            <tbody>
+              <thead>
+                <tr>
+                  <th colspan="2" class="table-header">QBR</th>
+                </tr>
+              </thead>
+              <tr ng-repeat="game in qbs.qbrLeaders">
+                <td class="player-name-row">{{ game.player_name }}</td>
+                <td class="stat-row">{{ game.qb_rating }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <h1 class="position-header">Running Back Leaders</h1>
+    <!-- Running back leaders -->
+    <div class="row" ng-controller="NflRbCtrl as rbs">
+
+        <!-- Season passing touchdown leaders -->
+        <div class="col-md-4 table-column">
+          <div class="panel panel-default">
+          <table class="table table-hover stats-table">
+            <tbody>
+              <thead>
+                <tr>
+                  <th colspan="2" class="table-header">Total Touchdowns</th>
+                </tr>
+              </thead>
+              <tr ng-repeat="game in rbs.totalTdsLeaders">
+                <td class="player-name-row">{{ game.player_name }}</td>
+                <td class="stat-row">{{ game.total_tds}}</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+
+        <!-- Season passing yards leaders -->
+        <div class="col-md-4 table-column">
+          <div class="panel panel-default">
+           <table class="table table-hover stats-table">
+            <tbody>
+              <thead>
+                <tr>
+                  <th colspan="2" class="table-header">Total Yards</th>
+                </tr>
+              </thead>
+              <tr ng-repeat="game in rbs.totalYardsLeaders">
+                <td class="player-name-row">{{ game.player_name }}</td>
+                <td class="stat-row">{{ game.total_yards}}</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+
+        <!-- Season QBR leaders -->
+        <div class="col-md-4 table-column">
+          <div class="panel panel-default">
+            <table class="table table-hover stats-table">
+              <tbody>
+                <thead>
+                  <tr>
+                    <th colspan="2" class="table-header">Total Touches</th>
+                  </tr>
+                </thead>
+                <tr ng-repeat="game in rbs.totalTouchesLeaders">
+                  <td class="player-name-row">{{ game.player_name }}</td>
+                  <td class="stat-row">{{ game.total_touches }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  
+  
 
 <script src="static/main.js"></script>
 </body>
