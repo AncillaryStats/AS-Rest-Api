@@ -1,13 +1,13 @@
 from config import db
 
-class NFL_RB_Game_2015(Base):
+class NFL_RB_Game_2015(db.Model):
     """2015 NFL rb games table"""
     __tablename__ = 'nfl_rb_games_2015'
 
     id = db.Column(db.Integer, primary_key=True)
     player_name = db.Column(db.String)
 
-    date = db.Column(Date)
+    date = db.Column(db.Date)
     opponent = db.Column(db.String)
     result = db.Column(db.String)
     rush_attempts = db.Column(db.Integer)
