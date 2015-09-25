@@ -6,7 +6,7 @@ DATABASE = {
     'host': 'localhost',
     'port': '5432',
     'username': 'arosenberg',
-    'database': 'nfl_test_1'
+    'database': 'nfl_test_2'
 }
 
 ITEM_PIPELINES = {
