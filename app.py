@@ -4,9 +4,11 @@ import decimal, datetime
 from config import app, db
 
 from models.nfl_team_2015 import NFL_Team_2015
+from models.nfl_player_2015 import NFL_Player_2015
 from models.nfl_qb_game_2015 import NFL_QB_Game_2015
 from models.nfl_rb_game_2015 import NFL_RB_Game_2015
-
+from models.nfl_wr_game_2015 import NFL_WR_Game_2015
+from models.nfl_te_game_2015 import NFL_TE_Game_2015
 
 def cleanup_queries(results):
     data = []
@@ -37,6 +39,18 @@ def get_rb_games():
     js = json.dumps(clean_games)
     return js
 
+# Return nfl player info as json
+@app.route('/players', methods=['GET'])
+def get_players():
+    nfl_players_2015 = NFL_Player_2015.query.all()
+    clean_players = cleanup_queries(nfl_players_2015)
+    js = json.dumps(clean_players)
+    return js
+
+@app.route('/player', methods=['GET'])
+def get_player():
+    pass
+
+
 if __name__ == '__main__':
-    app.debug = True
     app.run();
