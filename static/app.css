@@ -429,12 +429,7 @@ th {
 
 /* END NORMALIZE.CSS */
 
-/*.table-column {
-  text-align: center;
-}*/
-
 .stat-row {
-  /*text-align: right;*/
   margin-right: -1em;
 }
 
@@ -449,13 +444,12 @@ th {
   font-weight: bold
 }
 
-.stats-table {
-  /*width: .8em;*/
-  /*border: 1px solid black;*/
-  /*float: left;*/
-  /*margin-right: 3em;*/
+.players-graph {
+  text-align: center;
 }
 
-.qb-tables {
-  margin: 0 auto;
+#myChart {
+  margin-top: 7em;
 }
+
+
