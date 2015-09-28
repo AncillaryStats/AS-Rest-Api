@@ -10,10 +10,14 @@
 
     var instance = {
 
+      // Promise calls to ensure rankings exist
       getQbs: getQbs,
       getRbs: getRbs,
+      getWrs: getWrs,
+      getTes: getTes,
 
       rankings: {
+        // QB Tables
         qbPassingTds: {
           title: 'Passing Touchdowns',
           category: 'passing_tds',
@@ -29,19 +33,52 @@
           category: 'qbr',
           stats: []
         },
-        rbTotalTds: {
-          title: 'Total Touchdowns',
-          category: 'total_tds',
+        // RB Tables
+        rbRushingTds: {
+          title: 'Rushing Touchdowns',
+          category: 'rush_tds',
           stats: []
         },
-        rbTotalYards: {
-          title: 'Total Yards',
-          category: 'total_yards',
+        rbRushingYards: {
+          title: 'Rushing Yards',
+          category: 'rush_yards',
           stats: []
         },
-        rbTotalTouches: {
-          title: 'Total Touches',
-          category: 'total_touches',
+        rbRushes: {
+          title: 'Rushes',
+          category: 'rush_attempts',
+          stats: []
+        },
+        // WR Tables
+        wrReceivingTds: {
+          title: 'Receiving Touchdowns',
+          category: 'rec_tds',
+          stats: []
+        },
+        wrReceivingYards: {
+          title: 'Receiving Tards',
+          category: 'rec_yards',
+          stats: []
+        },
+        wrReceptions: {
+          title: 'Receptions',
+          category: 'receptions',
+          stats: []
+        },
+        // TE Tables
+        teReceivingTds: {
+          title: 'Receiving Touchdowns',
+          category: 'rec_tds',
+          stats: []
+        },
+        teReceivingYards: {
+          title: 'Receiving Tards',
+          category: 'rec_yards',
+          stats: []
+        },
+        teReceptions: {
+          title: 'Receptions',
+          category: 'receptions',
           stats: []
         },
       }
@@ -65,12 +102,9 @@
     // Return qb season stats (cached in factory or from fresh request)
     function getQbs() {
       var def = $q.defer()
-
       if (instance.rankings.qbPassingTds.stats.length && instance.rankings.qbPassingYards.stats.length && instance.rankings.qbr.stats.length) {
-        console.log('qb leaders already exist')
         def.resolve()
       } else {
-        console.log('getting new qb leadesr');
         $http.get('/qbs')
         .then(function(res) {
 
@@ -91,28 +125,16 @@
     // Return rb season stats (cached in factory or from fresh request)
     function getRbs() {
       var def = $q.defer()
-
-      if (instance.rankings.qbPassingTds.stats.length && instance.rankings.qbPassingYards.stats.length && instance.rankings.qbr.stats.length) {
-        console.log('rb leaders already exist')
+      if (instance.rankings.rbRushingTds.stats.length && instance.rankings.rbRushingYards.stats.length && instance.rankings.rbRushes.stats.length) {
         def.resolve()
       } else {
-        console.log('getting new rb leaders');
-        var modRbStats = [];
         $http.get('/rbs/total')
         .then(function(res) {
-          console.dir(res.data)
           var rbStats = res.data;
-          rbStats.forEach(function(stat) {
-          if (stat.is_season_totals) {
-            stat.total_tds = stat.rush_tds + stat.rec_tds;
-            stat.total_yards = stat.rush_yards + stat.rec_yards;
-            stat.total_touches = stat.rush_attempts + stat.receptions;
-            modRbStats.push(stat);
-          }
-        });
-          instance.rankings.rbTotalTds.stats = getTopXInCatYForPosZ(10, 'total_tds', modRbStats);
-          instance.rankings.rbTotalYards.stats = getTopXInCatYForPosZ(10, 'total_yards', modRbStats);
-          instance.rankings.rbTotalTouches.stats = getTopXInCatYForPosZ(10, 'total_touches', modRbStats)
+
+          instance.rankings.rbRushingTds.stats = getTopXInCatYForPosZ(10, 'rush_tds', rbStats);
+          instance.rankings.rbRushingYards.stats = getTopXInCatYForPosZ(10, 'rush_yards', rbStats);
+          instance.rankings.rbRushes.stats = getTopXInCatYForPosZ(10, 'rush_attempts', rbStats)
           def.resolve()
         }, function(err) {
           console.error(err.stack);
@@ -120,6 +142,51 @@
         });
       }
 
+      return def.promise;
+    }
+
+
+
+
+    // Return wr season stats (cached in factory or from fresh request)
+    function getWrs() {
+      var def = $q.defer()
+      if (instance.rankings.wrReceivingTds.stats.length && instance.rankings.wrReceivingYards.stats.length && instance.rankings.wrReceptions.stats.length) {
+        def.resolve()
+      } else {
+        $http.get('/wrs/total')
+        .then(function(res) {
+          var wrStats = res.data;
+          instance.rankings.wrReceivingTds.stats = getTopXInCatYForPosZ(10, 'rec_tds', wrStats);
+          instance.rankings.wrReceivingYards.stats = getTopXInCatYForPosZ(10, 'rec_yards', wrStats);
+          instance.rankings.wrReceptions.stats = getTopXInCatYForPosZ(10, 'receptions', wrStats)
+          def.resolve()
+        }, function(err) {
+          console.error(err.stack);
+          def.reject(err);
+        });
+      }
+      return def.promise;
+    }
+
+    // Return te season stats (cached in factory or from fresh request)
+    function getTes() {
+      var def = $q.defer()
+      if (instance.rankings.teReceivingTds.stats.length && instance.rankings.teReceivingYards.stats.length && instance.rankings.teReceptions.stats.length) {
+        def.resolve()
+      } else {
+        $http.get('/tes/total')
+        .then(function(res) {
+          var teStats = res.data;
+          instance.rankings.teReceivingTds.stats = getTopXInCatYForPosZ(10, 'rec_tds', teStats);
+          instance.rankings.teReceivingYards.stats = getTopXInCatYForPosZ(10, 'rec_yards', teStats);
+          instance.rankings.teReceptions.stats = getTopXInCatYForPosZ(10, 'receptions', teStats)
+          def.resolve()
+        }, function(err) {
+          console.error(err.stack);
+          def.reject(err);
+        });
+      }
       return def.promise;
     }
 
