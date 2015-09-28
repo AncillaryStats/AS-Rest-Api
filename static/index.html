@@ -11,7 +11,7 @@
 <body>
 
   <!-- Navbar container -->
-  <nav class="nav navbar-inverse navbar-default">
+  <nav class="nav navbar-inverse navbar-default" ng-controller="NavCtrl">
     <div class="container">
       <!-- Home Link -->
       <div class="navbar-header">
@@ -24,6 +24,12 @@
       </ul>
 
       <form class="navbar-form navbar-right" role="search">
+
+        <tags-input ng-model="submit.question.Categories" min-length="2" replace-spaces-with-dashes="false" add-on-comma="true" add-on-enter="false" class="category-input">
+          <auto-complete source="" min-length="1"></auto-complete>
+        </tags-input>
+
+
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search players">
         </div>
@@ -54,6 +60,8 @@
   <script src="static/players-graph/players-graph-ctrl.js"></script>
   <script src="static/players-graph/select-players-ctrl.js"></script>
   <script src="static/players-graph/services/graph-info.js"></script>
+  <script src="static/player/player-ctrl.js"></script>
+  <script src="static/nav-ctrl.js"></script>
 
 
 </body>

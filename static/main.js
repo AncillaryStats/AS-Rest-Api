@@ -36,6 +36,11 @@
           }
         }
     })
+    .state('player', {
+      url: '/player/:name',
+        templateUrl: 'static/player/player.html',
+        controller: 'PlayerCtrl as player'
+    })
   }])
 
 
