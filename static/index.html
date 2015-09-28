@@ -3,19 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Sports Stats</title>
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <script src="static/bower_components/angular/angular.min.js"></script>
-  <script src="static/bower_components/n3-line-chart/build/line-chart.min.js"></script>
-  <script src="static/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
   <link rel="stylesheet" href="static/app.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <link rel="stylesheet" href="static/lavish.css">
-  
+  <link rel="stylesheet" href="static/bower_components/ng-tags-input/ng-tags-input.min.css">
 </head>
 <body>
-  
-
-  
 
   <!-- Navbar container -->
   <nav class="nav navbar-inverse navbar-default">
@@ -26,8 +19,8 @@
       </div>
 
       <ul class="nav navbar-nav">
-        <li><a href="#">NFL</a></li>
-        <li><a href="#">NBA</a></li>
+        <li><a href="#/leaders-tables">Season Leaders</a></li>
+        <li><a href="#/players-graph">Compare Players</a></li>
       </ul>
 
       <form class="navbar-form navbar-right" role="search">
@@ -42,18 +35,26 @@
 
   <!-- Main content container -->
   <div class="container">
-
-    <div ui-view></div>
-    <!-- <leader-table info="qbPassingTds"></leader-table> -->
-
+    <div ui-view class="main-content"></div>
   </div>
-  
-  
 
-<script src="static/main.js"></script>
-<script src="static/leader-tables/services/position-leaders.js"></script>
-<script src="static/leader-tables/leader-tables-ctrl.js"></script>
-<script src="static/leader-tables/components/leader-table.directive.js"></script>
+  <script src="static/bower_components/angular/angular.min.js"></script>
+  <script src="static/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="static/bower_components/ng-tags-input/ng-tags-input.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+  <script src="static/shared/ui-bootstrap-custom-tpls-0.13.4.min.js"></script>
+
+  <script src="static/main.js"></script>
+  <script src="static/shared/services/position-stats.js"></script>
+  <Script src="static/shared/services/player-info.js"></script>
+  <script src="static/leader-tables/services/position-leaders.js"></script>
+  <script src="static/leader-tables/leader-tables-ctrl.js"></script>
+  <script src="static/leader-tables/components/leader-table.directive.js"></script>
+  <script src="static/players-graph/players-graph-ctrl.js"></script>
+  <script src="static/players-graph/select-players-ctrl.js"></script>
+  <script src="static/players-graph/services/graph-info.js"></script>
+
 
 </body>
 </html>
