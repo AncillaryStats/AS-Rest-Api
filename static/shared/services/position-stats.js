@@ -9,13 +9,7 @@
   function PositionStats($http, $q){
 
     var instance = {
-      // get: get,
-      // games: {
-      //   qbs: [],
-      //   rbs: [],
-      //   wrs: [],
-      //   tes: []
-      // }
+
       getQbGames: getQbGames,
       getRbGames: getRbGames,
       getWrGames: getWrGames,
@@ -28,22 +22,7 @@
 
     return instance;
 
-    // function get() {
-    //   var def = $q.defer();
-    //   if (instance.qbGames.length) {
-    //     def.resolve()
-    //   } else {
-    //     $http.get('/qbs')
-    //     .then(function(res) {
-    //       instance.qbGames = res.data;
-    //       def.resolve();
-    //     }, function(err) {
-    //       def.reject(err);
-    //     });
-    //   }
-    //   return def.promise;
-    // }
-
+    // Return server call or cached version of qb games
     function getQbGames() {
       var def = $q.defer();
       if (instance.qbs.length) {
@@ -60,6 +39,7 @@
       return def.promise;
     }
 
+    // Return server call or cached version of rb games
     function getRbGames() {
       var def = $q.defer();
       if (instance.rbs.length) {
@@ -76,6 +56,7 @@
       return def.promise;
     }
 
+    // Return server call or cached version of wr games
     function getWrGames() {
       var def = $q.defer();
       if (instance.wrs.length) {
@@ -92,6 +73,7 @@
       return def.promise;
     }
 
+    // Return server call or cached version of te games
     function getTeGames() {
       var def = $q.defer();
       if (instance.tes.length) {

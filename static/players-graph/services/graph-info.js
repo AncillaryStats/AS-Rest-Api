@@ -78,13 +78,41 @@
         },
         'Rush TDs': {
           cat: 'rush_tds',
+          scaleSteps: 5,
+          scaleStepWidth: 1
+        },
+        'Receiving TDs': {
+          cat: 'rec_tds',
+          scaleSteps: 5,
+          scaleStepWidth: 1
+        },
+        'Receiving Yards': {
+          cat: 'rec_yards',
+          scaleSteps: 12,
+          scaleStepWidth: 25
+        },
+        'Receptions': {
+          cat: 'receptions',
+          scaleSteps: 12,
+          scaleStepWidth:2.5
+        },
+        'Average Yards/Rec': {
+          cat: 'avg_yards_per_rec',
           scaleSteps: 10,
+          scaleStepWidth: 5
+        },
+        'Fumbles': {
+          cat: 'fumbles',
+          scaleSteps: 5,
+          scaleStepWidth: 1
+        },
+        'Fumbles Lost': {
+          cat: 'fumbles_lost',
+          scaleSteps: 5,
           scaleStepWidth: 1
         }
       }
     };
-
-    instance.config
 
     instance.statMap = {
       'Pass Attempts': 'pass_attempts',
@@ -99,7 +127,13 @@
       'Rush Attempts': 'rush_attempts',
       'Rush Yards': 'rush_yards',
       'Average Yards/Rush': 'avg_yards_per_rush',
-      'Rush TDs': 'rush_tds'
+      'Rush TDs': 'rush_tds',
+      'Receiving Touchdowns': 'rec_tds',
+      'Receiving Yards': 'rec_yards',
+      'Receptions': 'receptions',
+      'Average Yards/Rec': 'avg_yards_per_rec',
+      'Fumbles': 'fumbles',
+      'Fumbles Lost': 'fumbles_lost'
     }
 
     return instance;

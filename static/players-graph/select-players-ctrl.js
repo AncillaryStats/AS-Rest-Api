@@ -27,6 +27,7 @@
     }
 
     $scope.updateCategory = function(cat) {
+      console.log(cat)
       GraphInfo.category = cat;
       $rootScope.$broadcast('updateGraph');
     }
@@ -36,8 +37,9 @@
       if (!selected) {
         players = [$tag.text]
       } else {
-        players = _.pluck(selected.qbs, 'text');
+        players = _.pluck(selected[pos], 'text');
       }
+      console.log(cat)
       GraphInfo.players = players
       GraphInfo.position = pos;
       GraphInfo.category = cat;
