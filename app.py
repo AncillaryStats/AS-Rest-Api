@@ -27,22 +27,6 @@ def cleanup_queries(results):
 def index():
     return app.send_static_file('index.html')
 
-# Return qb game stats as json
-@app.route('/qbs', methods=['GET'])
-def get_qb_games():
-    qb_games_2015 = NFL_QB_Game_2015.query.all()
-    clean_games = cleanup_queries(qb_games_2015)
-    js = json.dumps(clean_games)
-    return js
-
-# Return rb game stats as json
-@app.route('/rbs', methods=['GET'])
-def get_rb_games():
-    rb_games_2015 = NFL_RB_Game_2015.query.all()
-    clean_games = cleanup_queries(rb_games_2015)
-    js = json.dumps(clean_games)
-    return js
-
 # Return nfl player info as json
 @app.route('/players', methods=['GET'])
 def get_players():
@@ -53,10 +37,7 @@ def get_players():
     js = json.dumps(clean_players)
     return js
 
-@app.route('/rbs/regular')
-def get_rb_regular_games():
-    pass
-
+# All qb season totals 
 @app.route('/qbs/total')
 def get_qb_totals():
     qb_games_reg_2015 = NFL_QB_Game_2015.query.filter_by(is_season_totals=True).all()
@@ -64,21 +45,26 @@ def get_qb_totals():
     return json.dumps(clean_games)
 
 
-
+# All rb season totals
 @app.route('/rbs/total')
 def get_rb_season_totals():
     rb_games_reg_2015 = NFL_RB_Game_2015.query.filter_by(is_season_totals=True).all()
     clean_games = cleanup_queries(rb_games_reg_2015)
     return json.dumps(clean_games)
 
-@app.route('/player', methods=['GET'])
-def get_player():
-    pass
+# All wr season totals
+@app.route('/wrs/total')
+def get_wr_season_totals():
+    wr_games_reg_2015 = NFL_WR_Game_2015.query.filter_by(is_season_totals=True).all()
+    clean_games = cleanup_queries(wr_games_reg_2015)
+    return json.dumps(clean_games)
 
-
-
-
-
+# All te season totals
+@app.route('/tes/total')
+def get_te_season_totals():
+    te_games_reg_2015 = NFL_TE_Game_2015.query.filter_by(is_season_totals=True).all()
+    clean_games = cleanup_queries(te_games_reg_2015)
+    return json.dumps(clean_games)
 
 
 # All qb games
