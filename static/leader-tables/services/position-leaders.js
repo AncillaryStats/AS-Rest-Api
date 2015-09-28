@@ -98,7 +98,7 @@
       } else {
         console.log('getting new rb leaders');
         var modRbStats = [];
-        $http.get('/games/rbs/total')
+        $http.get('/rbs/total')
         .then(function(res) {
           console.dir(res.data)
           var rbStats = res.data;
