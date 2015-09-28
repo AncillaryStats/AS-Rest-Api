@@ -28,8 +28,8 @@
         },
         'Pass Yards': {
           cat: 'pass_yards',
-          scaleSteps: 10,
-          scaleStepWidth: 70
+          scaleSteps: 12,
+          scaleStepWidth: 50
         },
         'Completion %': {
           cat: 'comp_percentage',

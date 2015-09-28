@@ -76,8 +76,8 @@
           {
               label: 'My First dataset',
               fillColor: 'rgba(220,220,220,0.2)',
-              strokeColor: 'rgba(220,220,220,1)',
-              pointColor: 'rgba(220,220,220,1)',
+              strokeColor: '#33e8ff',
+              pointColor: '#33e8ff',
               pointStrokeColor: '#fff',
               pointHighlightFill: '#fff',
               pointHighlightStroke: 'rgba(220,220,220,1)',
@@ -96,8 +96,8 @@
           {
               label: 'My third dataset',
               fillColor: 'rgba(151,187,205,0.2)',
-              strokeColor: 'rgba(151,187,205,1)',
-              pointColor: 'rgba(151,187,205,1)',
+              strokeColor: '#20bf19',
+              pointColor: '#20bf19',
               pointStrokeColor: '#fff',
               pointHighlightFill: '#fff',
               pointHighlightStroke: 'rgba(151,187,205,1)',
@@ -106,8 +106,8 @@
           {
               label: 'My third dataset',
               fillColor: 'rgba(151,187,205,0.2)',
-              strokeColor: 'rgba(151,187,205,1)',
-              pointColor: 'rgba(151,187,205,1)',
+              strokeColor: '#bf2828',
+              pointColor: '#bf2828',
               pointStrokeColor: '#fff',
               pointHighlightFill: '#fff',
               pointHighlightStroke: 'rgba(151,187,205,1)',
@@ -116,8 +116,8 @@
           {
               label: 'My third dataset',
               fillColor: 'rgba(151,187,205,0.2)',
-              strokeColor: 'rgba(151,187,205,1)',
-              pointColor: 'rgba(151,187,205,1)',
+              strokeColor: '#000000',
+              pointColor: '#000000',
               pointStrokeColor: '#fff',
               pointHighlightFill: '#fff',
               pointHighlightStroke: 'rgba(151,187,205,1)',

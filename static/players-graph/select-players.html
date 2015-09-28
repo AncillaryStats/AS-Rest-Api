@@ -3,7 +3,7 @@
 
     <!-- QB Selection -->
     <tab heading="QB">
-      <tags-input on-tag-added="updatePlayers(selected, $tag, qbCategory, 'qbs')"  on-tag-removed="updatePlayers(selected, $tag, qbCategory, 'qbs')" ng-model="selected.qbs" placeholder="Select players" min-length="2" replace-spaces-with-dashes="false" add-from-autocomplete-only="true">
+      <tags-input on-tag-added="updatePlayers(selected, $tag, qbCategory, 'qbs')"  on-tag-removed="updatePlayers(selected, $tag, qbCategory, 'qbs')" ng-model="selected.qbs" max-tags="5" placeholder="Select players" min-length="2" replace-spaces-with-dashes="false" add-from-autocomplete-only="true">
         <auto-complete source="getPosition($query, 'qbs')" min-length="0"></auto-complete>
       </tags-input>
       <!-- <button type="button" class="btn btn-primary submitBtn" ng-click="addPlayer(selected)">Submit</button> -->
