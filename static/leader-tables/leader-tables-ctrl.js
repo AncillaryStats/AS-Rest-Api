@@ -33,7 +33,6 @@
     // Set wr leader rankings to $scope
     PositionLeaders.getWrs()
     .then(function() {
-      console.log(PositionLeaders.rankings)
       $scope.wrReceivingTds = PositionLeaders.rankings.wrReceivingTds;
       $scope.wrReceivingYards = PositionLeaders.rankings.wrReceivingYards;
       $scope.wrReceptions = PositionLeaders.rankings.wrReceptions;
@@ -44,7 +43,6 @@
     // Set te leader rankings to $scope
     PositionLeaders.getTes()
     .then(function() {
-      console.log(PositionLeaders.rankings)
       $scope.teReceivingTds = PositionLeaders.rankings.teReceivingTds;
       $scope.teReceivingYards = PositionLeaders.rankings.teReceivingYards;
       $scope.teReceptions = PositionLeaders.rankings.teReceptions;

@@ -105,7 +105,7 @@
       if (instance.rankings.qbPassingTds.stats.length && instance.rankings.qbPassingYards.stats.length && instance.rankings.qbr.stats.length) {
         def.resolve()
       } else {
-        $http.get('/qbs')
+        $http.get('/qbs/total')
         .then(function(res) {
 
           var qbStats = res.data;
@@ -144,9 +144,6 @@
 
       return def.promise;
     }
-
-
-
 
     // Return wr season stats (cached in factory or from fresh request)
     function getWrs() {
