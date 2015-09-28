@@ -448,8 +448,30 @@ th {
   text-align: center;
 }
 
+.main-content {
+  margin-top: 3em;
+}
+
+/* Compare Players View */
+
+.select-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.select-player {
+  font-size: .8em;
+  padding: .5em 0;
+  border: 1px solid black;
+}
+
+.category-radios > label{
+  display: block;
+  /*float: right;*/
+}
+/*
 #myChart {
   margin-top: 7em;
-}
+}*/
 
 
