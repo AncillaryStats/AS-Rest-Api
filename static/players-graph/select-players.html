@@ -1,0 +1,55 @@
+
+  <tabset>
+
+    <!-- QB Selection -->
+    <tab heading="QB">
+      <tags-input on-tag-added="updatePlayers(selected, $tag, qbCategory, 'qbs')"  on-tag-removed="updatePlayers(selected, $tag, qbCategory, 'qbs')" ng-model="selected.qbs" placeholder="Select players" min-length="2" replace-spaces-with-dashes="false" add-from-autocomplete-only="true">
+        <auto-complete source="getPosition($query, 'qbs')" min-length="0"></auto-complete>
+      </tags-input>
+      <!-- <button type="button" class="btn btn-primary submitBtn" ng-click="addPlayer(selected)">Submit</button> -->
+
+
+      <pre ng-value="qbCategory" id="qbCategory">{{qbCategory || 'Select a category'}}</pre>
+      <div class="category-radios">
+          <label class="btn btn-primary" ng-model="qbCategory" ng-change="updateCategory(qbCategory)" btn-radio="'Pass Attempts'">Pass Attempts</label>
+          <label class="btn btn-primary" ng-model="qbCategory" ng-change="updateCategory(qbCategory)" btn-radio="'Pass Completions'">Pass Completions</label>
+          <label class="btn btn-primary" ng-model="qbCategory" ng-change="updateCategory(qbCategory)" btn-radio="'Pass Yards'">Pass Yards</label>
+          <label class="btn btn-primary" ng-model="qbCategory" ng-change="updateCategory(qbCategory)" btn-radio="'Completion %'">Completion %</label>
+          <label class="btn btn-primary" ng-model="qbCategory" ng-change="updateCategory(qbCategory)" btn-radio="'Average Yards/Pass'">Average Yards/Pass</label>
+          <label class="btn btn-primary" ng-model="qbCategory" ng-change="updateCategory(qbCategory)" btn-radio="'Pass TDs'">Pass TDs</label>
+          <label class="btn btn-primary" ng-model="qbCategory" ng-change="updateCategory(qbCategory)" btn-radio="'Interceptions'">Interceptions</label>
+          <label class="btn btn-primary" ng-model="qbCategory" ng-change="updateCategory(qbCategory)" btn-radio="'QBR'">QBR</label>
+          <label class="btn btn-primary" ng-model="qbCategory" ng-change="updateCategory(qbCategory)" btn-radio="'Passer Rating'">Passer Rating</label>
+          <label class="btn btn-primary" ng-model="qbCategory" ng-change="updateCategory(qbCategory)" btn-radio="'Rush Attempts'">Rush Attempts</label>
+          <label class="btn btn-primary" ng-model="qbCategory" ng-change="updateCategory(qbCategory)" btn-radio="'Rush Yards'">Rush Yards</label>
+          <label class="btn btn-primary" ng-model="qbCategory" ng-change="updateCategory(qbCategory)" btn-radio="'Average Yards/Rush'">Average Yards/Rush</label>
+          <label class="btn btn-primary" ng-model="qbCategory" ng-change="updateCategory(qbCategory)" btn-radio="'Rush TDs'">Rush TDs</label>
+      </div>
+
+    </tab>
+
+    <!-- RB Selection -->
+    <tab heading="RB">
+      <tags-input ng-model="selected.rbs" min-length="2" replace-spaces-with-dashes="false" add-from-autocomplete-only="true">
+        <auto-complete source="getPosition($query, 'rbs')" min-length="0"></auto-complete>
+      </tags-input>
+      <button type="button" class="btn btn-primary submitBtn" ng-click="addPlayer(selected)">Submit</button>
+    </tab>
+
+    <!-- WR Selection -->
+    <tab heading="WR">
+      <tags-input ng-model="selected.wrs" min-length="2" replace-spaces-with-dashes="false" add-from-autocomplete-only="true">
+        <auto-complete source="getPosition($query, 'wrs')" min-length="0"></auto-complete>
+      </tags-input>
+      <button type="button" class="btn btn-primary submitBtn" ng-click="addPlayer(selected)">Submit</button>
+    </tab>
+
+    <!-- TE Selection -->
+    <tab heading="TE">
+      <tags-input ng-model="selected.tes" min-length="2" replace-spaces-with-dashes="false" add-from-autocomplete-only="true">
+        <auto-complete source="getPosition($query, 'tes')" min-length="0"></auto-complete>
+      </tags-input>
+      <button type="button" class="btn btn-primary submitBtn" ng-click="addPlayer(selected)">Submit</button>
+    </tab>
+
+  </tabset>
