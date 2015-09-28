@@ -22,45 +22,48 @@
       'tes': PositionStats.getTeGames,
     }
 
+    // Update graph with new statistics on broadcast
     $rootScope.$on('updateGraph', function() {
       var gameData = []
       var retrieveGames = posMap[GraphInfo.position]
-      retrieveGames()
-      .then(function(games) {
 
-        games = PositionStats[GraphInfo.position];
-  
-        // Get games of first five selected by players and sort by date
-        // Add to object with player's name and push to dataset to be show in graph
-        _.each(_.first(GraphInfo.players, 5), function(player) {
-          var playerGames = {
-            name: player,
-            games: _.where(games, { player_name: player })
-          }
-          playerGames.games = _.sortBy(playerGames.games, function (game) {
-            return game.date;
+      // Only updates if at least one player has been selected
+      if (retrieveGames) {
+        retrieveGames()
+        .then(function(games) {
+          games = PositionStats[GraphInfo.position];
+    
+          // Get games of first five selected by players and sort by date
+          // Add to object with player's name and push to dataset to be show in graph
+          _.each(_.first(GraphInfo.players, 5), function(player) {
+            var playerGames = {
+              name: player,
+              games: _.where(games, { player_name: player })
+            }
+            playerGames.games = _.sortBy(playerGames.games, function (game) {
+              return game.date;
+            })
+            gameData.push(playerGames);
           })
-          gameData.push(playerGames);
+
+          for (var i = 0; i < gameData.length; i++) {
+
+            var convertedCat = GraphInfo.config[GraphInfo.category].cat;
+            var values = _.pluck(gameData[i].games, convertedCat)
+            data.datasets[i].label = gameData[i].name;
+            data.datasets[i].data = values;
+          }
+
+          // Set scale options according to GraphInfo config for each cat
+          options.scaleSteps = GraphInfo.config[GraphInfo.category].scaleSteps
+          options.scaleStepWidth = GraphInfo.config[GraphInfo.category].scaleStepWidth
+
+          // Redraw chart
+          myLineChart.destroy()
+          myLineChart = new Chart(ctx).Line(data, options);
+
         })
-
-        for (var i = 0; i < gameData.length; i++) {
-
-          var convertedCat = GraphInfo.config[GraphInfo.category].cat;
-          var values = _.pluck(gameData[i].games, convertedCat)
-          data.datasets[i].label = gameData[i].name;
-          data.datasets[i].data = values;
-        }
-
-        // Set scale options according to GraphInfo config for each cat
-        options.scaleSteps = GraphInfo.config[GraphInfo.category].scaleSteps
-        options.scaleStepWidth = GraphInfo.config[GraphInfo.category].scaleStepWidth
-
-        // Redraw chart
-        myLineChart.destroy()
-        myLineChart = new Chart(ctx).Line(data, options);
-
-      })
-
+      }
     })
 
 
