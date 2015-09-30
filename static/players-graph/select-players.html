@@ -3,8 +3,8 @@
 
     <!-- QB Selection -->
     <tab heading="QB">
-      <tags-input on-tag-added="updatePlayers(selected, $tag, qbCategory, 'qbs')"  on-tag-removed="updatePlayers(selected, $tag, qbCategory, 'qbs')" ng-model="selected.qbs" max-tags="5" placeholder="Select players" min-length="2" replace-spaces-with-dashes="false" add-from-autocomplete-only="true">
-        <auto-complete source="getPosition($query, 'qbs')" min-length="0"></auto-complete>
+      <tags-input on-tag-added="updatePlayers(selected, $tag, qbCategory, 'QB')"  on-tag-removed="updatePlayers(selected, $tag, qbCategory, 'QB')" ng-model="selected.QB" max-tags="5" placeholder="Select players" min-length="2" replace-spaces-with-dashes="false" add-from-autocomplete-only="true">
+        <auto-complete source="getPosition($query, 'QB')" min-length="0"></auto-complete>
       </tags-input>
       <!-- <button type="button" class="btn btn-primary submitBtn" ng-click="addPlayer(selected)">Submit</button> -->
 
@@ -35,8 +35,8 @@
       </tags-input>
       <button type="button" class="btn btn-primary submitBtn" ng-click="addPlayer(selected)">Submit</button> -->
 
-      <tags-input on-tag-added="updatePlayers(selected, $tag, rbCategory, 'rbs')"  on-tag-removed="updatePlayers(selected, $tag, rbCategory, 'rbs')" ng-model="selected.rbs" max-tags="5" placeholder="Select players" min-length="2" replace-spaces-with-dashes="false" add-from-autocomplete-only="true">
-        <auto-complete source="getPosition($query, 'rbs')" min-length="0"></auto-complete>
+      <tags-input on-tag-added="updatePlayers(selected, $tag, rbCategory, 'RB')"  on-tag-removed="updatePlayers(selected, $tag, rbCategory, 'RB')" ng-model="selected.RB" max-tags="5" placeholder="Select players" min-length="2" replace-spaces-with-dashes="false" add-from-autocomplete-only="true">
+        <auto-complete source="getPosition($query, 'RB')" min-length="0"></auto-complete>
       </tags-input>
 
       <pre ng-value="rbCategory" id="rbCategory">{{rbCategory || 'Select a category'}}</pre>

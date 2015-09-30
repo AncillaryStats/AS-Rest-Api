@@ -22,10 +22,6 @@
       console.error(err);
     })
 
-    function updateGraph() {
-
-    }
-
     $scope.updateCategory = function(cat) {
       console.log(cat)
       GraphInfo.category = cat;

@@ -16,8 +16,8 @@
     var stat;
 
     var posMap = {
-      'qbs': PositionStats.getQbGames,
-      'rbs': PositionStats.getRbGames,
+      'QB': PositionStats.getQbGames,
+      'RB': PositionStats.getRbGames,
       'wrs': PositionStats.getWrGames,
       'tes': PositionStats.getTeGames,
     }
