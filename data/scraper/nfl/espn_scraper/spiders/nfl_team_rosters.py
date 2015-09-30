@@ -56,13 +56,13 @@ class EspnSpider(Spider):
 
 
         number_and_position = response.xpath('//*[@id="content"]/div[3]/div[2]/div[3]/ul[1]/li[1]/text()').extract()
-        # if type(number_and_position) is list:
-        #     number_and_position = number_and_position[0]
-        #     number = number_and_position.split()[0]
-        #     position = number_and_position.split()[1]
-        # else:
-        #     number = ''
-        #     position = ''
+        if type(number_and_position) is list:
+            number_and_position = number_and_position[0]
+            number = number_and_position.split()[0]
+            position = number_and_position.split()[1]
+        else:
+            number = ''
+            position = ''
 
         loader.add_value('number', number)
         loader.add_value('position', position)
