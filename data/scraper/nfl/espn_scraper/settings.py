@@ -1,12 +1,21 @@
 
 SPIDER_MODULES = ['espn_scraper.spiders']
 
+# DATABASE = {
+#     'drivername': 'postgres',
+#     'host': 'localhost',
+#     'port': '5432',
+#     'username': 'arosenberg',
+#     'database': 'nfl_test_2'
+# }
+
 DATABASE = {
     'drivername': 'postgres',
-    'host': 'localhost',
+    'host': 'ec2-54-163-228-109.compute-1.amazonaws.com',
     'port': '5432',
-    'username': 'arosenberg',
-    'database': 'nfl_test_2'
+    'username': 'npapimuvhzikjb',
+    'password': 'vdt-V65Njuzh1pr3d92byTAnFz',
+    'database': 'dak2n8qnpioi1g'
 }
 
 ITEM_PIPELINES = {
@@ -26,3 +35,5 @@ AUTOTHROTTLE_ENABLED=True
 AUTOTHROTTLE_START_DELAY=3
 
 DOWNLOAD_DELAY=2
+
+COOKIES_ENABLED=False
