@@ -1,4 +1,4 @@
-from config import db
+from app import db
 
 class NFL_Team_2015(db.Model):
     """2015 NFL teams table"""

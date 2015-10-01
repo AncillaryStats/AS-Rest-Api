@@ -1,4 +1,4 @@
-from config import db
+from app import db
 
 class NFL_Player_2015(db.Model):
     """2015 NFL players table"""
@@ -14,7 +14,7 @@ class NFL_Player_2015(db.Model):
         self.name = name
         self.number = number
         self.team = team
-        self.position = position
+        self.position = position}
 
     def __repr__(self):
         return '<Player: %r, Team: %r>' % (self.name, self.team)

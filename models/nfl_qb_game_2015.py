@@ -1,4 +1,4 @@
-from config import db
+from app import db
 
 class NFL_QB_Game_2015(db.Model):
     """2015 NFL qb games table"""
