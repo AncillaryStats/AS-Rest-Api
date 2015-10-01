@@ -56,7 +56,7 @@
           stats: []
         },
         wrReceivingYards: {
-          title: 'Receiving Tards',
+          title: 'Receiving Yards',
           category: 'rec_yards',
           stats: []
         },

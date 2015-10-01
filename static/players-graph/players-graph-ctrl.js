@@ -18,8 +18,8 @@
     var posMap = {
       'QB': PositionStats.getQbGames,
       'RB': PositionStats.getRbGames,
-      'wrs': PositionStats.getWrGames,
-      'tes': PositionStats.getTeGames,
+      'WR': PositionStats.getWrGames,
+      'TE': PositionStats.getTeGames,
     }
 
     // Update graph with new statistics on broadcast
@@ -32,7 +32,7 @@
         retrieveGames()
         .then(function(games) {
           games = PositionStats[GraphInfo.position];
-    
+
           // Get games of first five selected by players and sort by date
           // Add to object with player's name and push to dataset to be show in graph
           _.each(_.first(GraphInfo.players, 5), function(player) {
@@ -72,8 +72,6 @@
 
     var data = {
       labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', 'Week 7'],
-      // datasets: [
-      // ]
 
       datasets: [
           {
@@ -137,7 +135,11 @@
         scaleStepWidth: 1,
         scaleStartValue: 0,
 
+        // Provides legend on point hover
         multiTooltipTemplate: "<%=datasetLabel%> : <%= value %>",
+        
+        // Turns off animation
+        animation: false,
 
         ///Boolean - Whether grid lines are shown across the chart
         scaleShowGridLines : true,

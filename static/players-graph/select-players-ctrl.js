@@ -14,8 +14,8 @@
 
     PlayerInfo.get()
     .then(function() {
-      $scope.qbs = _.sortBy(_.where(PlayerInfo.players, { position: 'QB' }), 'name');
-      $scope.rbs = _.sortBy(_.where(PlayerInfo.players, { position: 'RB' }), 'name');
+      $scope.QB = _.sortBy(_.where(PlayerInfo.players, { position: 'QB' }), 'name');
+      $scope.RB = _.sortBy(_.where(PlayerInfo.players, { position: 'RB' }), 'name');
       $scope.wrs = _.sortBy(_.where(PlayerInfo.players, { position: 'WR' }), 'name');
       $scope.tes = _.sortBy(_.where(PlayerInfo.players, { position: 'TE' }), 'name');
     }, function(err) {
@@ -23,7 +23,6 @@
     })
 
     $scope.updateCategory = function(cat) {
-      console.log(cat)
       GraphInfo.category = cat;
       $rootScope.$broadcast('updateGraph');
     }
@@ -35,7 +34,6 @@
       } else {
         players = _.pluck(selected[pos], 'text');
       }
-      console.log(cat)
       GraphInfo.players = players
       GraphInfo.position = pos;
       GraphInfo.category = cat;
