@@ -1,6 +1,4 @@
 import os
-from flask import Flask
-from flask.ext.sqlalchemy import SQLAlchemy
 
 class Config(object):
     DEBUG = False
@@ -22,9 +20,3 @@ class DevelopmentConfig(Config):
 
 class TestingConfig(Config):
     TESTING = True
-
-app = Flask(__name__)
-print(os.environ['DATABASE_URL'])
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://arosenberg@localhost:5432/nfl_test_2'
-app.config.from_object(os.environ['APP_SETTINGS'])
-db = SQLAlchemy(app)
