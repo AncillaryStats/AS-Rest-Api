@@ -16,8 +16,8 @@
     .then(function() {
       $scope.QB = _.sortBy(_.where(PlayerInfo.players, { position: 'QB' }), 'name');
       $scope.RB = _.sortBy(_.where(PlayerInfo.players, { position: 'RB' }), 'name');
-      $scope.wrs = _.sortBy(_.where(PlayerInfo.players, { position: 'WR' }), 'name');
-      $scope.tes = _.sortBy(_.where(PlayerInfo.players, { position: 'TE' }), 'name');
+      $scope.WR = _.sortBy(_.where(PlayerInfo.players, { position: 'WR' }), 'name');
+      $scope.TE = _.sortBy(_.where(PlayerInfo.players, { position: 'TE' }), 'name');
     }, function(err) {
       console.error(err);
     })
@@ -28,6 +28,7 @@
     }
 
     $scope.updatePlayers = function(selected, $tag, cat, pos) {
+      console.log(pos)
       var players;
       if (!selected) {
         players = [$tag.text]

@@ -25,6 +25,8 @@
     // Update graph with new statistics on broadcast
     $rootScope.$on('updateGraph', function() {
       var gameData = []
+
+      // Retrieves set of games according to position (QB, RB, WR, TE)
       var retrieveGames = posMap[GraphInfo.position]
 
       // Only updates if at least one player has been selected
