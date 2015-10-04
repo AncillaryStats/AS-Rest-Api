@@ -1,7 +1,8 @@
 from flask import json
+import redis
+import os
 from flask.ext.sqlalchemy import SQLAlchemy
 from app import app, db
-import datetime
 
 from models.nfl_team_2015 import NFL_Team_2015
 from models.nfl_player_2015 import NFL_Player_2015
@@ -10,8 +11,9 @@ from models.nfl_rb_game_2015 import NFL_RB_Game_2015
 from models.nfl_wr_game_2015 import NFL_WR_Game_2015
 from models.nfl_te_game_2015 import NFL_TE_Game_2015
 
-import redis
-r = redis.Redis(host='localhost', port=6379, db=0)
+redis_url = os.environ['REDISTOGO_URL']
+
+r = redis.StrictRedis.from_url(redis_url, db=0)
 
 def redis_cache(key, query, ttl=30):
     """
