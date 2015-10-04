@@ -10,8 +10,30 @@ from models.nfl_rb_game_2015 import NFL_RB_Game_2015
 from models.nfl_wr_game_2015 import NFL_WR_Game_2015
 from models.nfl_te_game_2015 import NFL_TE_Game_2015
 
+import redis
+r = redis.Redis(host='localhost', port=6379, db=0)
+
+def redis_cache(key, query, ttl=30):
+    """
+    Check redis for query results before checking db
+    Default expire time = 30 seconds (FIXME)
+    """
+    print 'checking redis cache'
+    if r.get(key):
+        print 'returning data found in cache'
+        return r.get(key)
+    else:
+        print 'retrieving and caching new query results'
+        results = cleanup_queries(query())
+        js = json.dumps(results)
+        r.set(key, js)
+        r.expire(key, ttl)
+        return js
+
+
+
 def cleanup_queries(results):
-    """Converts date to string format and removes 'sa_instance_state' key """
+    """Converts date to string format and removes 'sa_instance_state' key"""
     data = []
     for result in results:
         result.__dict__.pop('_sa_instance_state', 'None')
@@ -33,46 +55,47 @@ def index():
 @app.route('/players', methods=['GET'])
 def get_players():
     """Return NFL player info"""
-    nfl_players_2015 = NFL_Player_2015.query.all()
-    clean_players = cleanup_queries(nfl_players_2015)
-    js = json.dumps(clean_players)
-    return js
+    nfl_players = redis_cache('nfl_players_key', NFL_Player_2015.query.all)
+    return nfl_players
 
-# All qb season totals 
-@app.route('/qbs/total')
+#####################
+#   SEASON TOTALS   #
+#####################
+
+# All qb season totals
+@app.route('/totals/qbs')
 def get_qb_totals():
     """Return NFL QB season totals"""
-    qb_games_reg_2015 = NFL_QB_Game_2015.query.filter_by(is_season_totals=True).all()
-    clean_games = cleanup_queries(qb_games_reg_2015)
-    return json.dumps(clean_games)
-
+    qb_totals = redis_cache('qb_games_key', NFL_QB_Game_2015.query.filter_by(is_season_totals=True).all)
+    return qb_totals
 
 # All rb season totals
-@app.route('/rbs/total')
+@app.route('/totals/rbs')
 def get_rb_season_totals():
     """Return NFL RB season totals"""
-    rb_games_reg_2015 = NFL_RB_Game_2015.query.filter_by(is_season_totals=True).all()
-    clean_games = cleanup_queries(rb_games_reg_2015)
-    return json.dumps(clean_games)
+    rb_totals = redis_cache('rb_games_key', NFL_RB_Game_2015.query.filter_by(is_season_totals=True).all)
+    return rb_totals
 
 # All wr season totals
-@app.route('/wrs/total')
+@app.route('/totals/wrs')
 def get_wr_season_totals():
     """Return NFL WR season totals"""
-    wr_games_reg_2015 = NFL_WR_Game_2015.query.filter_by(is_season_totals=True).all()
-    clean_games = cleanup_queries(wr_games_reg_2015)
-    return json.dumps(clean_games)
+    wr_totals = redis_cache('wr_games_key', NFL_WR_Game_2015.query.filter_by(is_season_totals=True).all)
+    return wr_totals
 
 # All te season totals
-@app.route('/tes/total')
+@app.route('/totals/tes')
 def get_te_season_totals():
     """Return NFL TE season totals"""
-    te_games_reg_2015 = NFL_TE_Game_2015.query.filter_by(is_season_totals=True).all()
-    clean_games = cleanup_queries(te_games_reg_2015)
-    return json.dumps(clean_games)
+    te_totals = redis_cache('te_games_key', NFL_TE_Game_2015.query.filter_by(is_season_totals=True).all)
+    return te_totals
+
+#############################
+#   REGULAR SEASONS GAMES   #
+#############################
 
 # All qb games
-@app.route('/qbs/games')
+@app.route('/games/qbs')
 def get_qb_game():
     """Return NFL QB regular season games"""
     qb_games_reg_2015 = NFL_QB_Game_2015.query.filter_by(is_season_totals=False).all()
@@ -80,7 +103,7 @@ def get_qb_game():
     return json.dumps(clean_games)
 
 # All rb games
-@app.route('/rbs/games')
+@app.route('/games/rbs')
 def get_rb_game():
     """Return NFL RB regular season games"""
     rb_games_reg_2015 = NFL_RB_Game_2015.query.filter_by(is_season_totals=False).all()
@@ -88,7 +111,7 @@ def get_rb_game():
     return json.dumps(clean_games)
 
 # All wr games
-@app.route('/wrs/games')
+@app.route('/games/wrs')
 def get_wr_game():
     """Return NFL WR regular season games"""
     wr_games_reg_2015 = NFL_WR_Game_2015.query.filter_by(is_season_totals=False).all()
@@ -96,7 +119,7 @@ def get_wr_game():
     return json.dumps(clean_games)
 
 # All te games
-@app.route('/tes/games')
+@app.route('/games/tes')
 def get_te_game():
     """Return NFL TE regular season games"""
     te_games_reg_2015 = NFL_TE_Game_2015.query.filter_by(is_season_totals=False).all()
