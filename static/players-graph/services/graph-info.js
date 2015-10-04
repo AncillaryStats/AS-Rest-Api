@@ -9,7 +9,6 @@
   function GraphInfo($http, $q){
 
     var instance = {
-      // get: get,
       players: [],
       category: '',
       position: '',
@@ -137,27 +136,6 @@
     }
 
     return instance;
-
-
-
-    // If players do not exist, retrieve
-    // Resolve
-    // function get() {
-    //   var def = $q.defer()
-    //   if (instance.games.length) {
-    //     def.resolve();
-    //   } else {
-    //     $http.get('/players')
-    //     .then(function(res) {
-    //       instance.players = res.data;
-    //       def.resolve();
-    //     }, function(err) {
-    //       def.reject(err)
-    //     })
-    //   }
-    //   return def.promise;
-    // }
-
 
   }
 

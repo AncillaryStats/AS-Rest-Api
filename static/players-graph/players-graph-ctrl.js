@@ -29,8 +29,8 @@
       // Retrieves set of games according to position (QB, RB, WR, TE)
       var retrieveGames = posMap[GraphInfo.position]
 
-      // Only updates if at least one player has been selected
-      if (retrieveGames) {
+      // Only updates if a category and at least one player has been selected
+      if (retrieveGames && GraphInfo.category) {
         retrieveGames()
         .then(function(games) {
           games = PositionStats[GraphInfo.position];
@@ -49,7 +49,6 @@
           })
 
           for (var i = 0; i < gameData.length; i++) {
-
             var convertedCat = GraphInfo.config[GraphInfo.category].cat;
             var values = _.pluck(gameData[i].games, convertedCat)
             data.datasets[i].label = gameData[i].name;
@@ -139,7 +138,7 @@
 
         // Provides legend on point hover
         multiTooltipTemplate: "<%=datasetLabel%> : <%= value %>",
-        
+
         // Turns off animation
         animation: false,
 
