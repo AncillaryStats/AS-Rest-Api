@@ -28,7 +28,7 @@
       if (instance.QB.length) {
         def.resolve()
       } else {
-        $http.get('/qbs/games')
+        $http.get('/games/qbs')
         .then(function(res) {
           instance.QB = res.data;
           def.resolve();
@@ -45,7 +45,7 @@
       if (instance.RB.length) {
         def.resolve()
       } else {
-        $http.get('/rbs/games')
+        $http.get('/games/rbs')
         .then(function(res) {
           instance.RB = res.data;
           def.resolve();
@@ -62,7 +62,7 @@
       if (instance.WR.length) {
         def.resolve()
       } else {
-        $http.get('/wrs/games')
+        $http.get('/games/wrs')
         .then(function(res) {
           instance.WR = res.data;
           def.resolve();
@@ -79,7 +79,7 @@
       if (instance.TE.length) {
         def.resolve();
       } else {
-        $http.get('/tes/games')
+        $http.get('/games/tes')
         .then(function(res) {
           instance.TE = res.data;
           def.resolve();

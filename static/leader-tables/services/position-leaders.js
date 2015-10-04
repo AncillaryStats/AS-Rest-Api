@@ -105,7 +105,7 @@
       if (instance.rankings.qbPassingTds.stats.length && instance.rankings.qbPassingYards.stats.length && instance.rankings.qbr.stats.length) {
         def.resolve()
       } else {
-        $http.get('/qbs/total')
+        $http.get('/totals/qbs')
         .then(function(res) {
 
           var qbStats = res.data;
@@ -128,7 +128,7 @@
       if (instance.rankings.rbRushingTds.stats.length && instance.rankings.rbRushingYards.stats.length && instance.rankings.rbRushes.stats.length) {
         def.resolve()
       } else {
-        $http.get('/rbs/total')
+        $http.get('/totals/rbs')
         .then(function(res) {
           var rbStats = res.data;
 
@@ -151,7 +151,7 @@
       if (instance.rankings.wrReceivingTds.stats.length && instance.rankings.wrReceivingYards.stats.length && instance.rankings.wrReceptions.stats.length) {
         def.resolve()
       } else {
-        $http.get('/wrs/total')
+        $http.get('/totals/wrs')
         .then(function(res) {
           var wrStats = res.data;
           instance.rankings.wrReceivingTds.stats = getTopXInCatYForPosZ(10, 'rec_tds', wrStats);
@@ -172,7 +172,7 @@
       if (instance.rankings.teReceivingTds.stats.length && instance.rankings.teReceivingYards.stats.length && instance.rankings.teReceptions.stats.length) {
         def.resolve()
       } else {
-        $http.get('/tes/total')
+        $http.get('/totals/tes')
         .then(function(res) {
           var teStats = res.data;
           instance.rankings.teReceivingTds.stats = getTopXInCatYForPosZ(10, 'rec_tds', teStats);
