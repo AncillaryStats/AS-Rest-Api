@@ -14,6 +14,7 @@
       getRbGames: getRbGames,
       getWrGames: getWrGames,
       getTeGames: getTeGames,
+      getAllGames: getAllGames,
       QB: [],
       RB: [],
       WR: [],
@@ -22,7 +23,7 @@
 
     return instance;
 
-    // Return server call or cached version of qb games
+    // Ensures position's games exist
     function getQbGames() {
       var def = $q.defer();
       if (instance.QB.length) {
@@ -39,7 +40,7 @@
       return def.promise;
     }
 
-    // Return server call or cached version of rb games
+    // Ensures position's games exist
     function getRbGames() {
       var def = $q.defer();
       if (instance.RB.length) {
@@ -56,7 +57,7 @@
       return def.promise;
     }
 
-    // Return server call or cached version of wr games
+    // Ensures position's games exist
     function getWrGames() {
       var def = $q.defer();
       if (instance.WR.length) {
@@ -73,7 +74,7 @@
       return def.promise;
     }
 
-    // Return server call or cached version of te games
+    // Ensures position's games exist
     function getTeGames() {
       var def = $q.defer();
       if (instance.TE.length) {
@@ -88,6 +89,15 @@
         })
       }
       return def.promise;
+    }
+
+    function getAllGames() {
+      return $q.all([
+        getQbGames(),
+        getRbGames(),
+        getWrGames(),
+        getTeGames() 
+      ])
     }
 
   }

@@ -1,8 +1,9 @@
+<div class="select_players">
 
   <tabset>
 
     <!-- QB Selection -->
-    <tab heading="QB" select="loadTab()">
+    <tab class="position-select" heading="QB" select="loadTab()">
       <tags-input on-tag-added="updatePlayers(selected, $tag, qbCategory, 'QB')"  on-tag-removed="updatePlayers(selected, $tag, qbCategory, 'QB')" ng-model="selected.QB" max-tags="5" placeholder="Select players" min-length="2" replace-spaces-with-dashes="false" add-from-autocomplete-only="true">
         <auto-complete source="getPosition($query, 'QB')" min-length="0"></auto-complete>
       </tags-input>
@@ -27,7 +28,7 @@
     </tab>
 
     <!-- RB Selection -->
-    <tab heading="RB" select="loadTab()">
+    <tab class="position-select" heading="RB" select="loadTab()">
 
       <!-- RB name autocomplete -->
       <tags-input on-tag-added="updatePlayers(selected, $tag, rbCategory, 'RB')"  on-tag-removed="updatePlayers(selected, $tag, rbCategory, 'RB')" ng-model="selected.RB" max-tags="5" placeholder="Select players" min-length="2" replace-spaces-with-dashes="false" add-from-autocomplete-only="true">
@@ -52,7 +53,7 @@
     </tab>
 
     <!-- WR Selection -->
-    <tab heading="WR" select="loadTab()">
+    <tab class="position-select" heading="WR" select="loadTab()">
 
       <!-- WR name autocomplete -->
       <tags-input on-tag-added="updatePlayers(selected, $tag, wrCategory, 'WR')"  on-tag-removed="updatePlayers(selected, $tag, wrCategory, 'WR')" ng-model="selected.WR" max-tags="5" placeholder="Select players" min-length="2" replace-spaces-with-dashes="false" add-from-autocomplete-only="true">
@@ -77,7 +78,7 @@
     </tab>
 
     <!-- TE Selection -->
-    <tab heading="TE" select="loadTab()">
+    <tab class="position-select" heading="TE" select="loadTab()">
 
       <!-- TE name autocomplete -->
       <tags-input on-tag-added="updatePlayers(selected, $tag, teCategory, 'TE')"  on-tag-removed="updatePlayers(selected, $tag, teCategory, 'TE')" ng-model="selected.TE" max-tags="5" placeholder="Select players" min-length="2" replace-spaces-with-dashes="false" add-from-autocomplete-only="true">
@@ -101,3 +102,4 @@
     </tab>
 
   </tabset>
+</div>

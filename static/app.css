@@ -435,8 +435,8 @@ th {
 
 .position-header {
   text-align: center;
-  margin-top: 1em;
-  margin-bottom: 1em;
+  /*margin-top: 2em;*/
+
 }
 
 .table-header {
@@ -467,11 +467,17 @@ th {
 
 .category-radios > label{
   display: block;
-  /*float: right;*/
+  text-align: center;
+  margin-bottom: .2em;
 }
-/*
-#myChart {
-  margin-top: 7em;
-}*/
 
+.position-select > a {
+  color: #3498db;
+}
+
+/* Player Info View */
+
+.player-info h4 {
+  display: inline;
+}
 
