@@ -26,6 +26,11 @@
     $rootScope.$on('updateGraph', function() {
       var gameData = []
 
+      // Clear data points
+      data.datasets.forEach(function(set) {
+        set.data = [];
+      })
+
       // Retrieves set of games according to position (QB, RB, WR, TE)
       var retrieveGames = posMap[GraphInfo.position]
 
