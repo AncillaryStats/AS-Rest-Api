@@ -28,7 +28,7 @@
 
       <div class="col-md-offset-4 col-md-3">
         <form class="navbar-form" role="search">
-          <tags-input ng-model="playerName" min-length="2" replace-spaces-with-dashes="false" add-from-autocomplete-only="true" on-tag-added="goToPlayer(playerName, $query, $tag)" class="category-input">
+          <tags-input placeholder="Search players" ng-model="playerName" min-length="1" replace-spaces-with-dashes="false" add-from-autocomplete-only="true" on-tag-added="goToPlayer(playerName, $query, $tag)" class="category-input">
             <auto-complete source="getPlayers($query)" min-length="1"></auto-complete>
           </tags-input>
         </form>

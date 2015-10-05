@@ -9,7 +9,7 @@
   NavCtrl.$inject = ['$http', '$q', '$scope', 'PlayerInfo', '$state'];
 
   function NavCtrl($http, $q, $scope, PlayerInfo, $state) {
-     
+
     // Search players by name
     $scope.getPlayers = function($query) {
       var def = $q.defer()
@@ -21,10 +21,10 @@
       return def.promise;
     }
 
-    $scope.goToPlayer = function(playerName, query, tag) {
-      // $state.go('player', { name: tag.text.split(' ')[0] + '%20' + tag.text.split(' ')[1]})
-
-      $state.go('player', { name: tag.text })
+    // Go to player page on auto-complete selection
+    $scope.goToPlayer = function(playerName, query, $tag) {
+      $state.go('player', { name: $tag.text })
+      $scope.playerName = null;
     }
   }
 

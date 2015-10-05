@@ -21,10 +21,7 @@
     })
     .then(function() {
       var playerGames = _.where(PositionStats[$scope.position], { player_name: $stateParams.name })
-      console.log(playerGames)
     })
-
-    
 
   }
 
