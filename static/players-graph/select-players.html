@@ -10,19 +10,19 @@
 
       <pre ng-value="qbCategory" id="qbCategory">{{qbCategory || 'Select a category'}}</pre>
       <div class="category-radios">
-        <label class="btn btn-primary" ng-model="qbCategory" ng-change="updateCategory(qbCategory)" btn-radio="'Pass Attempts'">Pass Attempts</label>
-        <label class="btn btn-primary" ng-model="qbCategory" ng-change="updateCategory(qbCategory)" btn-radio="'Pass Completions'">Pass Completions</label>
-        <label class="btn btn-primary" ng-model="qbCategory" ng-change="updateCategory(qbCategory)" btn-radio="'Pass Yards'">Pass Yards</label>
-        <label class="btn btn-primary" ng-model="qbCategory" ng-change="updateCategory(qbCategory)" btn-radio="'Completion %'">Completion %</label>
-        <label class="btn btn-primary" ng-model="qbCategory" ng-change="updateCategory(qbCategory)" btn-radio="'Average Yards/Pass'">Average Yards/Pass</label>
-        <label class="btn btn-primary" ng-model="qbCategory" ng-change="updateCategory(qbCategory)" btn-radio="'Pass TDs'">Pass TDs</label>
-        <label class="btn btn-primary" ng-model="qbCategory" ng-change="updateCategory(qbCategory)" btn-radio="'Interceptions'">Interceptions</label>
-        <label class="btn btn-primary" ng-model="qbCategory" ng-change="updateCategory(qbCategory)" btn-radio="'QBR'">QBR</label>
-        <label class="btn btn-primary" ng-model="qbCategory" ng-change="updateCategory(qbCategory)" btn-radio="'Passer Rating'">Passer Rating</label>
-        <label class="btn btn-primary" ng-model="qbCategory" ng-change="updateCategory(qbCategory)" btn-radio="'Rush Attempts'">Rush Attempts</label>
-        <label class="btn btn-primary" ng-model="qbCategory" ng-change="updateCategory(qbCategory)" btn-radio="'Rush Yards'">Rush Yards</label>
-        <label class="btn btn-primary" ng-model="qbCategory" ng-change="updateCategory(qbCategory)" btn-radio="'Average Yards/Rush'">Average Yards/Rush</label>
-        <label class="btn btn-primary" ng-model="qbCategory" ng-change="updateCategory(qbCategory)" btn-radio="'Rush TDs'">Rush TDs</label>
+        <label class="btn btn-primary" ng-model="qbCategory" ng-change="updatePlayers(selected, $tag, qbCategory, 'QB')"btn-radio="'Pass Attempts'">Pass Attempts</label>
+        <label class="btn btn-primary" ng-model="qbCategory" ng-change="updatePlayers(selected, $tag, qbCategory, 'QB')"btn-radio="'Pass Completions'">Pass Completions</label>
+        <label class="btn btn-primary" ng-model="qbCategory" ng-change="updatePlayers(selected, $tag, qbCategory, 'QB')"btn-radio="'Pass Yards'">Pass Yards</label>
+        <label class="btn btn-primary" ng-model="qbCategory" ng-change="updatePlayers(selected, $tag, qbCategory, 'QB')"btn-radio="'Completion %'">Completion %</label>
+        <label class="btn btn-primary" ng-model="qbCategory" ng-change="updatePlayers(selected, $tag, qbCategory, 'QB')"btn-radio="'Average Yards/Pass'">Average Yards/Pass</label>
+        <label class="btn btn-primary" ng-model="qbCategory" ng-change="updatePlayers(selected, $tag, qbCategory, 'QB')"btn-radio="'Pass TDs'">Pass TDs</label>
+        <label class="btn btn-primary" ng-model="qbCategory" ng-change="updatePlayers(selected, $tag, qbCategory, 'QB')"btn-radio="'Interceptions'">Interceptions</label>
+        <label class="btn btn-primary" ng-model="qbCategory" ng-change="updatePlayers(selected, $tag, qbCategory, 'QB')"btn-radio="'QBR'">QBR</label>
+        <label class="btn btn-primary" ng-model="qbCategory" ng-change="updatePlayers(selected, $tag, qbCategory, 'QB')"btn-radio="'Passer Rating'">Passer Rating</label>
+        <label class="btn btn-primary" ng-model="qbCategory" ng-change="updatePlayers(selected, $tag, qbCategory, 'QB')"btn-radio="'Rush Attempts'">Rush Attempts</label>
+        <label class="btn btn-primary" ng-model="qbCategory" ng-change="updatePlayers(selected, $tag, qbCategory, 'QB')"btn-radio="'Rush Yards'">Rush Yards</label>
+        <label class="btn btn-primary" ng-model="qbCategory" ng-change="updatePlayers(selected, $tag, qbCategory, 'QB')"btn-radio="'Average Yards/Rush'">Average Yards/Rush</label>
+        <label class="btn btn-primary" ng-model="qbCategory" ng-change="updatePlayers(selected, $tag, qbCategory, 'QB')"btn-radio="'Rush TDs'">Rush TDs</label>
       </div>
 
     </tab>
@@ -38,16 +38,16 @@
       <!-- Rb category selection -->
       <pre ng-value="rbCategory" id="rbCategory">{{rbCategory || 'Select a category'}}</pre>
       <div class="category-radios">
-        <label class="btn btn-primary" ng-model="rbCategory" ng-change="updateCategory(rbCategory)" btn-radio="'Rush Attempts'">Rush Attempts</label>
-        <label class="btn btn-primary" ng-model="rbCategory" ng-change="updateCategory(rbCategory)" btn-radio="'Rush Yards'">Rush Yards</label>
-        <label class="btn btn-primary" ng-model="rbCategory" ng-change="updateCategory(rbCategory)" btn-radio="'Average Yards/Rush'">Average Yards/Rush</label>
-        <label class="btn btn-primary" ng-model="rbCategory" ng-change="updateCategory(rbCategory)" btn-radio="'Rush TDs'">Rush TDs</label>
-        <label class="btn btn-primary" ng-model="rbCategory" ng-change="updateCategory(rbCategory)" btn-radio="'Receptions'">Receptions</label>
-        <label class="btn btn-primary" ng-model="rbCategory" ng-change="updateCategory(rbCategory)" btn-radio="'Receiving Yards'">Receiving Yards</label>
-        <label class="btn btn-primary" ng-model="rbCategory" ng-change="updateCategory(rbCategory)" btn-radio="'Average Yards/Rec'">Average Yards/Rec</label>
-        <label class="btn btn-primary" ng-model="rbCategory" ng-change="updateCategory(rbCategory)" btn-radio="'Receiving TDs'">Receiving TDs</label>
-        <label class="btn btn-primary" ng-model="rbCategory" ng-change="updateCategory(rbCategory)" btn-radio="'Fumbles'">Fumbles</label>
-        <label class="btn btn-primary" ng-model="rbCategory" ng-change="updateCategory(rbCategory)" btn-radio="'Fumbles Lost'">Fumbles Lost</label>
+        <label class="btn btn-primary" ng-model="rbCategory" ng-change="updatePlayers(selected, $tag, rbCategory, 'RB')" btn-radio="'Rush Attempts'">Rush Attempts</label>
+        <label class="btn btn-primary" ng-model="rbCategory" ng-change="updatePlayers(selected, $tag, rbCategory, 'RB')" btn-radio="'Rush Yards'">Rush Yards</label>
+        <label class="btn btn-primary" ng-model="rbCategory" ng-change="updatePlayers(selected, $tag, rbCategory, 'RB')" btn-radio="'Average Yards/Rush'">Average Yards/Rush</label>
+        <label class="btn btn-primary" ng-model="rbCategory" ng-change="updatePlayers(selected, $tag, rbCategory, 'RB')" btn-radio="'Rush TDs'">Rush TDs</label>
+        <label class="btn btn-primary" ng-model="rbCategory" ng-change="updatePlayers(selected, $tag, rbCategory, 'RB')" btn-radio="'Receptions'">Receptions</label>
+        <label class="btn btn-primary" ng-model="rbCategory" ng-change="updatePlayers(selected, $tag, rbCategory, 'RB')" btn-radio="'Receiving Yards'">Receiving Yards</label>
+        <label class="btn btn-primary" ng-model="rbCategory" ng-change="updatePlayers(selected, $tag, rbCategory, 'RB')" btn-radio="'Average Yards/Rec'">Average Yards/Rec</label>
+        <label class="btn btn-primary" ng-model="rbCategory" ng-change="updatePlayers(selected, $tag, rbCategory, 'RB')" btn-radio="'Receiving TDs'">Receiving TDs</label>
+        <label class="btn btn-primary" ng-model="rbCategory" ng-change="updatePlayers(selected, $tag, rbCategory, 'RB')" btn-radio="'Fumbles'">Fumbles</label>
+        <label class="btn btn-primary" ng-model="rbCategory" ng-change="updatePlayers(selected, $tag, rbCategory, 'RB')" btn-radio="'Fumbles Lost'">Fumbles Lost</label>
       </div>
 
     </tab>
@@ -63,16 +63,16 @@
       <!-- WR category selection -->
       <pre ng-value="wrCategory" id="wrCategory">{{wrCategory || 'Select a category'}}</pre>
       <div class="category-radios">
-          <label class="btn btn-primary" ng-model="wrCategory" ng-change="updateCategory(wrCategory)" btn-radio="'Receptions'">Receptions</label>
-          <label class="btn btn-primary" ng-model="wrCategory" ng-change="updateCategory(wrCategory)" btn-radio="'Receiving Yards'">Receiving Yards</label>
-          <label class="btn btn-primary" ng-model="wrCategory" ng-change="updateCategory(wrCategory)" btn-radio="'Average Yards/Rec'">Average Yards/Rec</label>
-          <label class="btn btn-primary" ng-model="wrCategory" ng-change="updateCategory(wrCategory)" btn-radio="'Receiving TDs'">Receiving TDs</label>
-          <label class="btn btn-primary" ng-model="wrCategory" ng-change="updateCategory(wrCategory)" btn-radio="'Rush Attempts'">Rush Attempts</label>
-          <label class="btn btn-primary" ng-model="wrCategory" ng-change="updateCategory(wrCategory)" btn-radio="'Rush Yards'">Rush Yards</label>
-          <label class="btn btn-primary" ng-model="wrCategory" ng-change="updateCategory(wrCategory)" btn-radio="'Average Yards/Rush'">Average Yards/Rush</label>
-          <label class="btn btn-primary" ng-model="wrCategory" ng-change="updateCategory(wrCategory)" btn-radio="'Rush TDs'">Rush TDs</label>
-          <label class="btn btn-primary" ng-model="wrCategory" ng-change="updateCategory(wrCategory)" btn-radio="'Fumbles'">Fumbles</label>
-          <label class="btn btn-primary" ng-model="wrCategory" ng-change="updateCategory(wrCategory)" btn-radio="'Fumbles Lost'">Fumbles Lost</label>
+          <label class="btn btn-primary" ng-model="wrCategory" ng-change="updatePlayers(selected, $tag, wrCategory, 'WR')" btn-radio="'Receptions'">Receptions</label>
+          <label class="btn btn-primary" ng-model="wrCategory" ng-change="updatePlayers(selected, $tag, wrCategory, 'WR')" btn-radio="'Receiving Yards'">Receiving Yards</label>
+          <label class="btn btn-primary" ng-model="wrCategory" ng-change="updatePlayers(selected, $tag, wrCategory, 'WR')" btn-radio="'Average Yards/Rec'">Average Yards/Rec</label>
+          <label class="btn btn-primary" ng-model="wrCategory" ng-change="updatePlayers(selected, $tag, wrCategory, 'WR')" btn-radio="'Receiving TDs'">Receiving TDs</label>
+          <label class="btn btn-primary" ng-model="wrCategory" ng-change="updatePlayers(selected, $tag, wrCategory, 'WR')" btn-radio="'Rush Attempts'">Rush Attempts</label>
+          <label class="btn btn-primary" ng-model="wrCategory" ng-change="updatePlayers(selected, $tag, wrCategory, 'WR')" btn-radio="'Rush Yards'">Rush Yards</label>
+          <label class="btn btn-primary" ng-model="wrCategory" ng-change="updatePlayers(selected, $tag, wrCategory, 'WR')" btn-radio="'Average Yards/Rush'">Average Yards/Rush</label>
+          <label class="btn btn-primary" ng-model="wrCategory" ng-change="updatePlayers(selected, $tag, wrCategory, 'WR')" btn-radio="'Rush TDs'">Rush TDs</label>
+          <label class="btn btn-primary" ng-model="wrCategory" ng-change="updatePlayers(selected, $tag, wrCategory, 'WR')" btn-radio="'Fumbles'">Fumbles</label>
+          <label class="btn btn-primary" ng-model="wrCategory" ng-change="updatePlayers(selected, $tag, wrCategory, 'WR')" btn-radio="'Fumbles Lost'">Fumbles Lost</label>
       </div>
 
     </tab>
@@ -88,16 +88,16 @@
       <!-- TE category selection -->
       <pre ng-value="teCategory" id="teCategory">{{teCategory || 'Select a category'}}</pre>
       <div class="category-radios">
-        <label class="btn btn-primary" ng-model="teCategory" ng-change="updateCategory(teCategory)" btn-radio="'Receptions'">Receptions</label>
-        <label class="btn btn-primary" ng-model="teCategory" ng-change="updateCategory(teCategory)" btn-radio="'Receiving Yards'">Receiving Yards</label>
-        <label class="btn btn-primary" ng-model="teCategory" ng-change="updateCategory(teCategory)" btn-radio="'Average Yards/Rec'">Average Yards/Rec</label>
-        <label class="btn btn-primary" ng-model="teCategory" ng-change="updateCategory(teCategory)" btn-radio="'Receiving TDs'">Receiving TDs</label>
-        <label class="btn btn-primary" ng-model="teCategory" ng-change="updateCategory(teCategory)" btn-radio="'Rush Attempts'">Rush Attempts</label>
-        <label class="btn btn-primary" ng-model="teCategory" ng-change="updateCategory(teCategory)" btn-radio="'Rush Yards'">Rush Yards</label>
-        <label class="btn btn-primary" ng-model="teCategory" ng-change="updateCategory(teCategory)" btn-radio="'Average Yards/Rush'">Average Yards/Rush</label>
-        <label class="btn btn-primary" ng-model="teCategory" ng-change="updateCategory(teCategory)" btn-radio="'Rush TDs'">Rush TDs</label>
-        <label class="btn btn-primary" ng-model="teCategory" ng-change="updateCategory(teCategory)" btn-radio="'Fumbles'">Fumbles</label>
-        <label class="btn btn-primary" ng-model="teCategory" ng-change="updateCategory(teCategory)" btn-radio="'Fumbles Lost'">Fumbles Lost</label>
+        <label class="btn btn-primary" ng-model="teCategory" ng-change="updatePlayers(selected, $tag, teCategory, 'TE')" btn-radio="'Receptions'">Receptions</label>
+        <label class="btn btn-primary" ng-model="teCategory" ng-change="updatePlayers(selected, $tag, teCategory, 'TE')" btn-radio="'Receiving Yards'">Receiving Yards</label>
+        <label class="btn btn-primary" ng-model="teCategory" ng-change="updatePlayers(selected, $tag, teCategory, 'TE')" btn-radio="'Average Yards/Rec'">Average Yards/Rec</label>
+        <label class="btn btn-primary" ng-model="teCategory" ng-change="updatePlayers(selected, $tag, teCategory, 'TE')" btn-radio="'Receiving TDs'">Receiving TDs</label>
+        <label class="btn btn-primary" ng-model="teCategory" ng-change="updatePlayers(selected, $tag, teCategory, 'TE')" btn-radio="'Rush Attempts'">Rush Attempts</label>
+        <label class="btn btn-primary" ng-model="teCategory" ng-change="updatePlayers(selected, $tag, teCategory, 'TE')" btn-radio="'Rush Yards'">Rush Yards</label>
+        <label class="btn btn-primary" ng-model="teCategory" ng-change="updatePlayers(selected, $tag, teCategory, 'TE')" btn-radio="'Average Yards/Rush'">Average Yards/Rush</label>
+        <label class="btn btn-primary" ng-model="teCategory" ng-change="updatePlayers(selected, $tag, teCategory, 'TE')" btn-radio="'Rush TDs'">Rush TDs</label>
+        <label class="btn btn-primary" ng-model="teCategory" ng-change="updatePlayers(selected, $tag, teCategory, 'TE')" btn-radio="'Fumbles'">Fumbles</label>
+        <label class="btn btn-primary" ng-model="teCategory" ng-change="updatePlayers(selected, $tag, teCategory, 'TE')" btn-radio="'Fumbles Lost'">Fumbles Lost</label>
       </div>
     </tab>
 

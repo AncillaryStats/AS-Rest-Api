@@ -24,8 +24,9 @@
     })
 
     // Redraw graph on category update
-    $scope.updateCategory = function(cat) {
+    $scope.updateCategory = function(cat, pos) {
       GraphInfo.category = cat;
+      GraphInfo.position = pos
       $rootScope.$broadcast('updateGraph');
     }
 
@@ -50,12 +51,8 @@
 
     // Get players by position for autocomplete tags
     $scope.getPosition = function($query, position) {
-      console.log($query)
-      console.log(position)
-      console.log($scope[position])
       var def = $q.defer()
       var playerNames = _.pluck($scope[position], 'name')
-      console.log(playerNames)
       var filteredPlayers = _.filter(playerNames, function(qb) {
         return qb.toLowerCase().indexOf($query.toLowerCase()) != -1;
       });
