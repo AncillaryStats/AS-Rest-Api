@@ -52,22 +52,14 @@ def cleanup_queries(results):
 
 # Serve static AngularJS files
 @app.route('/', methods=['GET'])
-@crossdomain(origin=['https://www.sports-stats-pro.herokuapp.com',
-                     'https://www.sports-stats-stage.herokuapp.com',
-                     'https://www.as-web-client.herokuapp.com',
-                     'http://localhost:3000',
-                     'http://www.ancillarystats.com'])
+@crossdomain(origin='*')
 def index():
     """Serve AngularJS files"""
     return app.send_static_file('index.html')
 
 # Return nfl player info as json
 @app.route('/players', methods=['GET'])
-@crossdomain(origin=['https://www.sports-stats-pro.herokuapp.com',
-                     'https://www.sports-stats-stage.herokuapp.com',
-                     'https://www.as-web-client.herokuapp.com',
-                     'http://localhost:3000',
-                     'http://www.ancillarystats.com'])
+@crossdomain(origin='*')
 def get_players():
     """Return NFL player info"""
     nfl_players = redis_cache('nfl_players_key', NFL_Player_2015.query.all)
@@ -79,11 +71,7 @@ def get_players():
 
 # All qb season totals
 @app.route('/totals/qbs')
-@crossdomain(origin=['https://www.sports-stats-pro.herokuapp.com',
-                     'https://www.sports-stats-stage.herokuapp.com',
-                     'https://www.as-web-client.herokuapp.com',
-                     'http://localhost:3000',
-                     'http://www.ancillarystats.com'])
+@crossdomain(origin='*')
 def get_qb_totals():
     """Return NFL QB season totals"""
     qb_totals = redis_cache('qb_games_key', NFL_QB_Game_2015.query.filter_by(is_season_totals=True).all)
@@ -91,11 +79,7 @@ def get_qb_totals():
 
 # All rb season totals
 @app.route('/totals/rbs')
-@crossdomain(origin=['https://www.sports-stats-pro.herokuapp.com',
-                     'https://www.sports-stats-stage.herokuapp.com',
-                     'https://www.as-web-client.herokuapp.com',
-                     'http://localhost:3000',
-                     'http://www.ancillarystats.com'])
+@crossdomain(origin='*')
 def get_rb_season_totals():
     """Return NFL RB season totals"""
     rb_totals = redis_cache('rb_games_key', NFL_RB_Game_2015.query.filter_by(is_season_totals=True).all)
@@ -103,11 +87,7 @@ def get_rb_season_totals():
 
 # All wr season totals
 @app.route('/totals/wrs')
-@crossdomain(origin=['https://www.sports-stats-pro.herokuapp.com',
-                     'https://www.sports-stats-stage.herokuapp.com',
-                     'https://www.as-web-client.herokuapp.com',
-                     'http://localhost:3000',
-                     'http://www.ancillarystats.com'])
+@crossdomain(origin='*')
 def get_wr_season_totals():
     """Return NFL WR season totals"""
     wr_totals = redis_cache('wr_games_key', NFL_WR_Game_2015.query.filter_by(is_season_totals=True).all)
@@ -115,11 +95,7 @@ def get_wr_season_totals():
 
 # All te season totals
 @app.route('/totals/tes')
-@crossdomain(origin=['https://www.sports-stats-pro.herokuapp.com',
-                     'https://www.sports-stats-stage.herokuapp.com',
-                     'https://www.as-web-client.herokuapp.com',
-                     'http://localhost:3000',
-                     'http://www.ancillarystats.com'])
+@crossdomain(origin='*')
 def get_te_season_totals():
     """Return NFL TE season totals"""
     te_totals = redis_cache('te_games_key', NFL_TE_Game_2015.query.filter_by(is_season_totals=True).all)
@@ -131,11 +107,7 @@ def get_te_season_totals():
 
 # All qb games
 @app.route('/games/qbs')
-@crossdomain(origin=['https://www.sports-stats-pro.herokuapp.com',
-                     'https://www.sports-stats-stage.herokuapp.com',
-                     'https://www.as-web-client.herokuapp.com',
-                     'http://localhost:3000',
-                     'http://www.ancillarystats.com'])
+@crossdomain(origin='*')
 def get_qb_game():
     """Return NFL QB regular season games"""
     qb_games_reg_2015 = NFL_QB_Game_2015.query.filter_by(is_season_totals=False).all()
@@ -144,11 +116,7 @@ def get_qb_game():
 
 # All rb games
 @app.route('/games/rbs')
-@crossdomain(origin=['https://www.sports-stats-pro.herokuapp.com',
-                     'https://www.sports-stats-stage.herokuapp.com',
-                     'https://www.as-web-client.herokuapp.com',
-                     'http://localhost:3000',
-                     'http://www.ancillarystats.com'])
+@crossdomain(origin='*')
 def get_rb_game():
     """Return NFL RB regular season games"""
     rb_games_reg_2015 = NFL_RB_Game_2015.query.filter_by(is_season_totals=False).all()
@@ -157,11 +125,7 @@ def get_rb_game():
 
 # All wr games
 @app.route('/games/wrs')
-@crossdomain(origin=['https://www.sports-stats-pro.herokuapp.com',
-                     'https://www.sports-stats-stage.herokuapp.com',
-                     'https://www.as-web-client.herokuapp.com',
-                     'http://localhost:3000',
-                     'http://www.ancillarystats.com'])
+@crossdomain(origin='*')
 def get_wr_game():
     """Return NFL WR regular season games"""
     wr_games_reg_2015 = NFL_WR_Game_2015.query.filter_by(is_season_totals=False).all()
@@ -170,11 +134,7 @@ def get_wr_game():
 
 # All te games
 @app.route('/games/tes')
-@crossdomain(origin=['https://www.sports-stats-pro.herokuapp.com',
-                     'https://www.sports-stats-stage.herokuapp.com',
-                     'https://www.as-web-client.herokuapp.com',
-                     'http://localhost:3000',
-                     'http://www.ancillarystats.com'])
+@crossdomain(origin='*')
 def get_te_game():
     """Return NFL TE regular season games"""
     te_games_reg_2015 = NFL_TE_Game_2015.query.filter_by(is_season_totals=False).all()
