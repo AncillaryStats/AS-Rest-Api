@@ -1,4 +1,4 @@
-from flask import json
+from flask import json, jsonify
 import redis
 import os
 from flask.ext.sqlalchemy import SQLAlchemy
@@ -16,6 +16,16 @@ redis_url = os.environ['REDISTOGO_URL']
 
 r = redis.StrictRedis.from_url(redis_url, db=0)
 
+# class RedisCache(object):
+#     """
+#     Check redis for query results before checking db
+#     Default expire time = 1 hour
+#     """
+#     def __init__(self):
+
+    
+
+
 def redis_cache(key, query, ttl=30):
     """
     Check redis for query results before checking db
@@ -32,6 +42,19 @@ def redis_cache(key, query, ttl=30):
         r.set(key, js)
         r.expire(key, ttl)
         return js
+
+
+def format_responses(responses):
+    res = []
+    for result in results:
+        item = {}
+        for key in result:
+            item[key] = result[key]
+            if 'date' in item:
+                formatted_date = item['date'].strftime('%m/%d/%Y')
+                item['date'] = formatted_date
+            res.append(item)
+    return jsonify(res)
 
 
 
@@ -140,4 +163,19 @@ def get_te_game():
     te_games_reg_2015 = NFL_TE_Game_2015.query.filter_by(is_season_totals=False).all()
     clean_games = cleanup_queries(te_games_reg_2015)
     return json.dumps(clean_games)
+
+
+########################
+#   TRENDING PLAYERS   #
+########################
+
+# Trending players by mention on Reddit's /r/nfl and /r/fantasyfootbal
+@app.route('/trending')
+@crossdomain(origin='*')
+def get_trending():
+    """Return trending NFL players (already in JSON format)"""
+    trending = r.get('trending_store')
+    return trending
+
+
 
