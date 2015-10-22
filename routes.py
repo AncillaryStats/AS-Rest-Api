@@ -16,15 +16,6 @@ redis_url = os.environ['REDISTOGO_URL']
 
 r = redis.StrictRedis.from_url(redis_url, db=0)
 
-# class RedisCache(object):
-#     """
-#     Check redis for query results before checking db
-#     Default expire time = 1 hour
-#     """
-#     def __init__(self):
-
-    
-
 
 def redis_cache(key, query, ttl=30):
     """

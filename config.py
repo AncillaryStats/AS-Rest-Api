@@ -6,6 +6,7 @@ class Config(object):
     CSRF_ENABLED = True
     SECRET_KEY = 'this needs to be changed soon'
     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+    REDIS_URL = os.environ['REDISTOGO_URL']
 
 class ProductionConfig(Config):
     DEBUG = False
