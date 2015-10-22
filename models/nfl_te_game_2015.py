@@ -1,6 +1,6 @@
 from app import db
 
-class NFL_TE_Game_2015(db.Model):
+class NFL_TE_Game_2015_M(db.Model):
     """2015 NFL te games table"""
     __tablename__ = 'nfl_te_games_2015'
 
