@@ -27,7 +27,7 @@ class NFL_Teams_2015(Resource):
     """Return list of player objects"""
     # @cors.crossdomain(origin='*')
     def get(self):
-        return [team.to_dict() for team in NFL_Team_2015_M.query.all()]
+        return [utils.to_dict(team) for team in NFL_Team_2015_M.query.all()]
 
 # class NFL_Team_Game(Resource):
 #     def get(self, team_id):
