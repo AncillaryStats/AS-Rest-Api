@@ -1,11 +1,30 @@
 from flask_restful import Api
 from app import app
-from resources.nfl.player import NFL_Player_2015
+from flask_restful.utils import cors
+from resources.nfl.player import NFL_Player_2015, All_NFL_Players_2015
 from resources.nfl.team import NFL_Teams_2015, NFL_Team_2015
+import resources.nfl.totals as t
+import resources.nfl.games as g
+import resources.nfl.trending as trend
 
 api = Api(app)
+api.decorators = [cors.crossdomain(origin='*')]
 
-api.add_resource(NFL_Teams_2015, '/api/teams')
-api.add_resource(NFL_Player_2015, '/api/player/<int:player_id>', endpoint='player_id')
-api.add_resource(NFL_Team_2015, '/api/team/<int:team_id>', endpoint='team_id')
+# Public APIS
 
+api.add_resource(NFL_Teams_2015, '/api/nfl/teams')
+api.add_resource(NFL_Player_2015, '/api/nfl/player/<int:player_id>', endpoint='player_id')
+api.add_resource(NFL_Team_2015, '/api/nfl/team/<int:team_id>', endpoint='team_id')
+
+# Private APIS
+
+api.add_resource(All_NFL_Players_2015, '/api/players')
+api.add_resource(t.QB_Totals_2015, '/api/totals/qbs')
+api.add_resource(t.RB_Totals_2015, '/api/totals/rbs')
+api.add_resource(t.WR_Totals_2015, '/api/totals/wrs')
+api.add_resource(t.TE_Totals_2015, '/api/totals/tes')
+api.add_resource(g.QB_Games_2015, '/api/games/qbs')
+api.add_resource(g.RB_Games_2015, '/api/games/rbs')
+api.add_resource(g.WR_Games_2015, '/api/games/wrs')
+api.add_resource(g.TE_Games_2015, '/api/games/tes')
+api.add_resource(trend.Trending_Players, '/api/trending')
