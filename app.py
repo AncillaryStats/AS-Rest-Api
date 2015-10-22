@@ -1,12 +1,9 @@
 import os
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
+import redis
 
 app = Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
 db = SQLAlchemy(app)
-
-from routes import *
-
-if __name__ == '__main__':
-    app.run();
+r = redis.StrictRedis.from_url(app.config['REDIS_URL'], db=0)
