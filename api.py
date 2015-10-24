@@ -7,6 +7,14 @@ import resources.nfl.totals as t
 import resources.nfl.games as g
 import resources.nfl.trending as trend
 
+
+
+from models.nfl_qb_game_2015 import NFL_QB_Game_2015_M
+from models.nfl_rb_game_2015 import NFL_RB_Game_2015_M
+from models.nfl_wr_game_2015 import NFL_WR_Game_2015_M
+from models.nfl_te_game_2015 import NFL_TE_Game_2015_M
+
+
 api = Api(app)
 api.decorators = [cors.crossdomain(origin='*')]
 
@@ -19,12 +27,6 @@ api.add_resource(NFL_Team_2015, '/api/nfl/team/<int:team_id>', endpoint='team_id
 # Private APIS
 
 api.add_resource(All_NFL_Players_2015, '/api/nfl/players')
-api.add_resource(t.QB_Totals_2015, '/api/nfl/totals/qbs')
-api.add_resource(t.RB_Totals_2015, '/api/nfl/totals/rbs')
-api.add_resource(t.WR_Totals_2015, '/api/nfl/totals/wrs')
-api.add_resource(t.TE_Totals_2015, '/api/nfl/totals/tes')
-api.add_resource(g.QB_Games_2015, '/api/nfl/games/qbs')
-api.add_resource(g.RB_Games_2015, '/api/nfl/games/rbs')
-api.add_resource(g.WR_Games_2015, '/api/nfl/games/wrs')
-api.add_resource(g.TE_Games_2015, '/api/nfl/games/tes')
+api.add_resource(t.Pos_Totals_2015, '/api/nfl/totals/<string:pos>')
+api.add_resource(g.Pos_Games_2015, '/api/nfl/games/<string:pos>')
 api.add_resource(trend.Trending_Players, '/api/nfl/trending')
