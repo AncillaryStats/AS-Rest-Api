@@ -1,5 +1,5 @@
 from app import db
-from flask_restful import Resource
+from flask_restful import Resource, abort
 from flask_restful.utils import cors
 from models.nfl_player_2015 import NFL_Player_2015_M
 from models.nfl_qb_game_2015 import NFL_QB_Game_2015_M
@@ -16,22 +16,36 @@ pos_map = {
 }
 
 class NFL_Player_2015(Resource):
-    # @cors.crossdomain(origin='*')
+    """
+    Return basic info, season totals and regular season games for a player by id
+    """
     def get(self, player_id):
-        row = NFL_Player_2015_M.query.filter(NFL_Player_2015_M.id == player_id).one()
-        player = utils.to_dict(row)
-        game_model = pos_map[player['position']]
+        try:
+            row = NFL_Player_2015_M.query.filter(NFL_Player_2015_M.id == player_id).all()
+            player = utils.to_dict(row)
+            game_model = pos_map[player['position']]
+            games = game_model.query.filter(game_model.player_name == player['name']).all()
+        except:
+            abort(400, response={
+                'status': 400,
+                'message': 'Player not found'
+            })
+        else:
+            return utils.success(games)
 
-        games = game_model.query.filter(game_model.player_name == player['name']).all()
-
-        result = {
-            'info': player,
-            'games': [utils.to_dict(game) for game in games]
-        }
-
-        return result
 
 class All_NFL_Players_2015(Resource):
-    # @cors.crossdomain(origin='*')
+    """
+    Return basic info for all NFL players
+    """
     def get(self):
-        return [utils.to_dict(player) for player in NFL_Player_2015_M.query.all()]
+        try:
+            players = [utils.to_dict(player) for player in NFL_Player_2015_M.query.all()]
+        except:
+            abort(400, response={
+                'status': 400,
+                'message': 'Players not found'
+            })
+        else:
+            return utils.success(players)
+

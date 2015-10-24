@@ -1,7 +1,7 @@
 def to_dict(row):
     """
     Convert a SQLAlchemy row to python dict
-    If the row contains a PostgreSQL datetime value, convert it to str
+    If the row contains a PostgreSQL date value, convert it to str
     """
     d = {}
     for c in row.__table__.columns:
@@ -11,3 +11,14 @@ def to_dict(row):
           d['date'] = getattr(row, 'date').strftime('%m/%d/%Y')
 
     return d
+
+def success(result, status=200):
+    """
+    Successful response format for API requests
+    """
+    response =  {
+        'status': status,
+        'result': result
+    }
+    return response
+
